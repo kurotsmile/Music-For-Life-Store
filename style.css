@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff7f50, #dc3545); /* Cam đến đỏ */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+    color: #fff !important;
+}
+.navbar-nav .nav-link {
+    color: #fff !important;
+}
+.container {
+    max-width: 800px;
+    margin: 80px auto 20px auto; /* Adjusted margin to account for fixed navbar */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2); /* Màu nền với độ trong suốt */
+    backdrop-filter: blur(10px); /* Hiệu ứng blur */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+h1 {
+    font-size: 24px;
+    color: #000; /* Black */
+    margin-bottom: 20px;
+}
+.song-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+.song-item {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Màu nền với độ trong suốt nhẹ */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Màu viền nhẹ */
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+.song-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.song-avatar {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.song-title {
+    font-size: 18px;
+    color: #dc3545; /* Đỏ */
+    margin-bottom: 5px;
+}
+.song-artist {
+    font-size: 14px;
+    color: #666;
+}
+/* Các phần CSS khác không thay đổi */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 20px; /* Cách lề phải 20px */
+    background-color: #dc3545; /* Màu đỏ */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+
+#scrollTopBtn:hover {
+    background-color: #c82333; /* Màu đỏ sáng khi hover */
+}
+
+#scrollTopBtn::before {
+    content: "↑"; /* Biểu tượng mũi tên lên */
+}
+
+/* Các phần CSS khác không thay đổi */
+.mp3-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    display: none; /* Ẩn trình phát nhạc */
+    align-items: center;
+    justify-content: space-between;
+}
+.mp3-player.active {
+    display: flex; /* Hiển thị trình phát nhạc khi có lớp active */
+}
+.mp3-player .info {
+    display: flex;
+    align-items: center;
+}
+.mp3-player img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.mp3-player .controls {
+    display: flex;
+    align-items: center;
+}
+.mp3-player .controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+.mp3-player .controls button:hover {
+    color: #dc3545; /* Đỏ */
+}
