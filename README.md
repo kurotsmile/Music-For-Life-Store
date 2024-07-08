@@ -1,18 +1,31 @@
-# README.md Example with Table
+# Music For Life Store
 
-Đây là một ví dụ về cách tạo bảng hai cột trong tệp README.md trên GitHub.
+Welcome to **Music For Life Store**, a web platform that offers a vast collection of songs. Users can enjoy features such as listening to music by country, viewing lyrics, and much more. Our platform also integrates various services to call remote APIs for fetching data on song lists, individual songs, artists, and genres.
 
-## Table Example
+## Features
 
+- **Listen by Country**: Explore and listen to music from different countries.
+- **View Lyrics**: View the lyrics of your favorite songs.
+- **API Integration**: Call remote APIs to fetch data on:
+  - Song Lists
+  - Individual Songs
+  - Artists
+  - Genres
 
-| Giá trị 1 | Giá trị 2 |
-| Giá trị 3 | Giá trị 4 |
-| Giá trị 5 | Giá trị 6 |
+## Getting Started
 
-Bạn có thể thêm bao nhiêu hàng và cột tùy ý. Dưới đây là các bước để tạo bảng:
+### Prerequisites
 
-1. Bắt đầu với một hàng tiêu đề, sử dụng các dấu `|` để tách các cột.
-2. Trên dòng tiếp theo, sử dụng `-` để tạo đường kẻ ngang cho tiêu đề cột.
-3. Thêm dữ liệu của bạn vào các hàng tiếp theo, sử dụng các dấu `|` để tách các cột.
+To run this project, you'll need:
 
-Chúc bạn thành công!
+- A web server (e.g., Apache, Nginx)
+- Node.js and npm (for building and running the project)
+- API keys for accessing the remote APIs (if required)
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/yourusername/music-for-life-store.git
+   cd music-for-life-store
