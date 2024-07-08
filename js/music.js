@@ -61,6 +61,48 @@ class Music{
         a.click();
         URL.revokeObjectURL(url);
     }
+
+    async pay(){
+        if (!window.PaymentRequest) {
+            alert('Web Payments API is not supported in this browser.');
+            return;
+        }
+
+        const paymentMethods = [{
+            supportedMethods: 'basic-card',
+            data: {
+                supportedNetworks: ['visa', 'mastercard', 'amex']
+            }
+        }];
+
+        const paymentDetails = {
+            displayItems: [
+                {
+                    label: 'Music For Life Subscription',
+                    amount: { currency: 'USD', value: '9.99' }
+                }
+            ],
+            total: {
+                label: 'Total',
+                amount: { currency: 'USD', value: '9.99' }
+            }
+        };
+
+        try {
+            const request = new PaymentRequest(paymentMethods, paymentDetails);
+
+            const paymentResponse = await request.show();
+            await paymentResponse.complete('success');
+            alert('Payment successful!');
+        } catch (err) {
+            console.error(err);
+            alert('Payment failed or was cancelled.');
+        }
+    }
+
+    show_list_year(){
+        m.loadJs("js/songs_year.js","song_year","show");
+    }
 }
 
 var m;

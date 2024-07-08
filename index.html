@@ -45,9 +45,12 @@
     </nav>
 
     <div class="container">
-        <h1 class="mb-4"><img id="logo_app" src="images/logo.png" alt="Logo" id="logo"> Store Music 
+        <h1 class="mb-4">
+            <img id="logo_app" role="button" src="images/logo.png" alt="Logo" id="logo" onclick="m.onLoad()"> Store Music 
             <button class="btn btn-sm" onclick="m.donwload_artist()"><i class="fas fa-user-tie"></i> Artist</button>
-            <button class="btn btn-sm" onclick="m.donwload_year()"><i class="far fa-calendar-alt"></i> Year</button>
+            <button class="btn btn-sm" onclick="m.show_list_year()"><i class="far fa-calendar-alt"></i> Year</button>
+            <button class="btn btn-sm" onclick="m.donwload_year()"><i class="far fa-calendar-alt"></i> Download Year</button>
+            <button class="btn btn-sm" onclick="m.pay()"><i class="far fa-calendar-alt"></i> Test</button>
         </h1>
         <div class="song-list" id="song-list"><div><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>
     </div>
