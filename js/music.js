@@ -28,7 +28,7 @@ $(document).ready(function() {
             var obj_year={"name":song.year,"lang":song.lang};
             addOrUpdateObjectToList(list_year,obj_year);
             
-            var songItem = `<div class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
+            var songItem = `<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
                                 <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
                                 <div class="song-title">${song.name}</div>
                                 <div class="song-artist">${song.artist}</div>
@@ -134,10 +134,16 @@ $(document).ready(function() {
 
 
 function donwload_artist(){
-    download_json(list_artist,"song_artist.json");
+    var data_download={};
+    data_download["all_item"]=list_artist;
+    data_download["collection"]='song_artist';
+    download_json(data_download,"song_artist.json");
 }
 
 function donwload_year(){
+    var data_download={};
+    data_download["all_item"]=list_year;
+    data_download["collection"]='song_year';
     download_json(list_year,"song_year.json");
 }
 
