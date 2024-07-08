@@ -7,7 +7,6 @@ $(document).ready(function() {
                                 <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
                                 <div class="song-title">${song.name}</div>
                                 <div class="song-artist">${song.artist}</div>
-                                <button class="btn btn-sm btn-info song-info-btn"><i class="fas fa-info-circle"></i> Info</button>
                             </div>`;
             songList.append(songItem);
         });
