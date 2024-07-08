@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Store Music</title>
+<link href="favicon.ico" rel="shortcut icon" type="images/x-icon">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- SweetAlert2 CSS -->
@@ -11,7 +12,7 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-NHoIbqU3LckJavj1gZs8sb2/dBCrSvOsHw/o+eLwL7LjLp7bQHbBmPFGNCS1xujTyuAtlu6V0Gz2/cXn4jRLOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- Custom CSS -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -22,26 +23,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="https://www.amazon.com/dp/B09BJJ61V2" target="_blank">Amazon</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="https://apps.microsoft.com/detail/9pmh34z5twz2?hl=en-us&gl=US" target="_blank">Microsoft Store</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="https://musica-para-la-vida.en.uptodown.com/android" target="_blank">uptodown</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="https://apkpure.com/music-for-life/com.CarrotApp.musicforlife#google_vignette" target="_blank">Apkpure</a>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container">
-        <h1 class="mb-4">Store Music</h1>
+        <h1 class="mb-4"><img id="logo_app" src="images/logo.png" alt="Logo" id="logo"> Store Music <button class="btn btn-sm" onclick="donwload_artist()"><i class="fas fa-user-tie"></i> Artist</button></h1>
         <div class="song-list" id="song-list">
             <!-- Songs will be loaded here -->
         </div>
     </div>
+
     <button id="scrollTopBtn"></button>
 
     <div class="mp3-player" id="mp3-player">

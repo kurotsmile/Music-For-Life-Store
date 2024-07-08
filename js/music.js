@@ -1,8 +1,12 @@
+var list_artist=[];
+var list_year=[];
+
 $(document).ready(function() {
-    // Load song data from URL
+
     $.getJSON("https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json", function(data) {
         var songList = $("#song-list");
         $.each(data.all_item, function(index, song) {
+            list_artist.push({"name":song.artist,"lang":song.lang});
             var songItem = `<div class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
                                 <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
                                 <div class="song-title">${song.name}</div>
@@ -11,13 +15,11 @@ $(document).ready(function() {
             songList.append(songItem);
         });
 
-        // Add click event for each song item
         $('.song-item').click(function() {
             var songSrc = $(this).data('src');
             var songTitle = $(this).data('title');
             var songArtist = $(this).data('artist');
 
-            // Update player information
             $('#player-song-title').text(songTitle);
             $('#player-song-artist').text(songArtist);
             $('#mp3-player').find('audio').remove();
@@ -25,21 +27,18 @@ $(document).ready(function() {
 
             var audioPlayer = $('#audio-player')[0];
 
-            // Show the player
             $('#mp3-player').addClass('active');
-            
-            // Play button functionality
+    
             $('#play-btn').off('click').click(function() {
                 if (audioPlayer.paused) {
                     audioPlayer.play();
-                    $(this).html('&#10074;&#10074;'); // Pause icon
+                    $(this).html('&#10074;&#10074;');
                 } else {
                     audioPlayer.pause();
-                    $(this).html('&#9654;'); // Play icon
+                    $(this).html('&#9654;');
                 }
             });
 
-            // Prev button functionality
             $('#prev-btn').off('click').click(function() {
                 // Implement previous song functionality if needed
             });
@@ -96,14 +95,12 @@ $(document).ready(function() {
         var scrollHeight = $(document).height();
         var scrollTop = $(window).scrollTop();
 
-        // Nếu cuộn đến một mức nào đó, hiển thị nút scrollTop
         if (scrollTop > windowHeight / 2) {
             scrollTopBtn.fadeIn();
         } else {
             scrollTopBtn.fadeOut();
         }
 
-        // Canh chỉnh nút scrollTop để nó nằm ở giữa theo chiều cao của trang
         var scrollRight = ($(window).width() - $('.container').offset().left - $('.container').width()) / 2 - 50; // 50px offset từ lề phải
         scrollTopBtn.css('right', scrollRight);
     });
@@ -113,3 +110,17 @@ $(document).ready(function() {
         return false;
     });
 });
+
+
+function donwload_artist(){
+       var jsonString = JSON.stringify(list_artist);
+       var blob = new Blob([jsonString], { type: "application/json" });
+
+       var url = URL.createObjectURL(blob);
+       
+       var a = document.createElement('a');
+       a.href = url;
+       a.download = 'song_artist.json';
+       a.click();
+       URL.revokeObjectURL(url);
+}
