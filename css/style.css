@@ -76,7 +76,7 @@ h1 {
     position: fixed;
     bottom: 50px;
     right: 20px; /* Cách lề phải 20px */
-    background-color: #dc3545; /* Màu đỏ */
+    background-color: #333;
     color: #fff;
     border: none;
     border-radius: 50%;

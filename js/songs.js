@@ -1,6 +1,7 @@
 class Songs{
     show(){
         $.getJSON("https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json", function(data) {
+            $("#song-list").html("");
             var songList = $("#song-list");
             $.each(data.all_item, function(index, song) {
                 var obj_artist={"name":song.artist,"lang":song.lang};
