@@ -3,10 +3,31 @@ var list_year=[];
 
 $(document).ready(function() {
 
+    function addOrUpdateObjectToList(list_obj, data_obj_add) {
+        var addedOrUpdate = false;
+        for (var i = 0; i < list_obj.length; i++) {
+            if (list_obj[i].name === data_obj_add.name && list_obj[i].lang === data_obj_add.lang) {
+                list_obj[i].amount = (list_obj[i].amount || 0) + 1;
+                addedOrUpdate = true;
+                break;
+            }
+        }
+
+        if (!addedOrUpdate) {
+            data_obj_add.amount=1;
+            list_obj.push(data_obj_add);
+        }
+    }
+
     $.getJSON("https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json", function(data) {
         var songList = $("#song-list");
         $.each(data.all_item, function(index, song) {
-            list_artist.push({"name":song.artist,"lang":song.lang});
+            var obj_artist={"name":song.artist,"lang":song.lang};
+            addOrUpdateObjectToList(list_artist,obj_artist);
+
+            var obj_year={"name":song.year,"lang":song.lang};
+            addOrUpdateObjectToList(list_year,obj_year);
+            
             var songItem = `<div class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
                                 <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
                                 <div class="song-title">${song.name}</div>
@@ -113,14 +134,22 @@ $(document).ready(function() {
 
 
 function donwload_artist(){
-       var jsonString = JSON.stringify(list_artist);
-       var blob = new Blob([jsonString], { type: "application/json" });
+    download_json(list_artist,"song_artist.json");
+}
 
-       var url = URL.createObjectURL(blob);
-       
-       var a = document.createElement('a');
-       a.href = url;
-       a.download = 'song_artist.json';
-       a.click();
-       URL.revokeObjectURL(url);
+function donwload_year(){
+    download_json(list_year,"song_year.json");
+}
+
+function download_json(data,file_name){
+    var jsonString = JSON.stringify(data);
+    var blob = new Blob([jsonString], { type: "application/json" });
+
+    var url = URL.createObjectURL(blob);
+    
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = file_name;
+    a.click();
+    URL.revokeObjectURL(url);
 }
