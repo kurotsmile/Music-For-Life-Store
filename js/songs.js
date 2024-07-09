@@ -50,12 +50,24 @@ class Songs{
                 var obj_lang={"name":song.lang,"lang":song.lang};
                 m.addOrUpdateObjectToList(m.song.list_lang,obj_lang);
                 
-                var songItem = `<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
+                var songItem = $(`<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
                                     <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
                                     <div class="song-title">${song.name}</div>
                                     <div class="song-artist">${song.artist}</div>
-                                </div>`;
-                m.song.emp_list_song.append(songItem);
+                                    <div class="btninfo"><i class="fas fa-info-circle"></i></div>
+                                </div>`);
+                var btn_info=$(songItem).find(".btninfo");
+                $(btn_info).click(()=>{
+                    Swal.fire({
+                        icon:"info",
+                        title:song.name,
+                        text:song.lyrics,
+                        iconColor: cr.color_btn,
+                        confirmButtonColor: cr.color_btn
+                    });
+                    return false;
+                });
+                $(m.song.emp_list_song).append(songItem);
             });
 
             $('.song-item').click(function() {

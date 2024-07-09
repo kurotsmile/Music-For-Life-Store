@@ -13,7 +13,7 @@ class Songs_year{
         this.emp_list_year=$('<div class="song-list col-12 pl-3 pr-3" id="song-list"></div>');
         $(container).append(this.emp_list_country);
         $(container).append(this.emp_list_year);
-        this.loadListByData(m.list_artist);      
+        this.loadListByData(m.list_year);      
     }
 
     loadListByData(data){

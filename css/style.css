@@ -158,3 +158,25 @@ h1 {
     background-color: white;
     color: #c82333;
 }
+
+.song-item .btninfo{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 21px;
+    z-index: 100;
+    display: none;
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.song-item .btninfo i{
+    color: #dc3545;
+}
+
+.song-item:hover .btninfo{
+    display: block;
+}
