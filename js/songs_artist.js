@@ -8,7 +8,7 @@ class Songs_Artist{
     show(){
         var container=$("#container");
         $(container).html('');
-        this.emp_list_country=$('<div class="col-12 text-center mb-2" id="list_country">List Country Artist</div>');
+        this.emp_list_country=$('<div class="col-12 text-center mb-2" id="list_country"></div>');
         this.emp_list_artist=$('<div class="song-list col-12 pl-3 pr-3" id="song-list"></div>');
         $(container).append(this.emp_list_country);
         $(container).append(this.emp_list_artist);
@@ -46,6 +46,12 @@ class Songs_Artist{
                 m.song_artist.loadListByData(l_new);
             });
             $(m.song_artist.emp_list_country).append(btn_l);
+        });
+
+        var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
+        $(this.emp_list_country).append(btn_download);
+        $(btn_download).click(()=>{
+            m.donwload_artist();
         });
     }
 

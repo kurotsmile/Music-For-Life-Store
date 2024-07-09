@@ -10,7 +10,7 @@ class Songs{
     show(){
         var container=$("#container");
         $(container).html('');
-        this.list_country=$('<div class="col-12 text-center mb-2" id="list_country">List Country</div>');
+        this.list_country=$('<div class="col-12 text-center mb-2" id="list_country"></div>');
         this.emp_list_song=$('<div class="song-list col-12 pl-3 pr-3" id="song-list"><div><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>');
         $(container).append(this.list_country);
         $(container).append(this.emp_list_song);
