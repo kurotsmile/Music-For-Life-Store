@@ -52,7 +52,7 @@ class Music{
     }
 
     show_list_year(){
-        m.loadJs("js/songs_year.js","song_year","show");
+        cr.loadJs("js/songs_year.js","song_year","show");
     }
 }
 
