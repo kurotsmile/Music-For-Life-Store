@@ -131,10 +131,8 @@ class Songs{
         var html='<iframe width="100%" height="315" src="https://www.youtube.com/embed/'+m.song.getYouTubeVideoId(data.link_ytb)+'?autoplay=0" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
         html+='<div id="all_btn_dock"></div>';
         Swal.fire({
-            icon:"info",
             title:data.name,
             html:html,
-            iconColor: cr.color_btn,
             confirmButtonColor: cr.color_btn,
             didOpen:()=>{
                 m.song.menuSubInfoBox(data);
@@ -150,10 +148,8 @@ class Songs{
         else lyrics=data.lyrics;
         lyrics+='<div id="all_btn_dock"></div>';
         Swal.fire({
-            icon:"info",
             title:data.name,
             html:lyrics,
-            iconColor: cr.color_btn,
             confirmButtonColor: cr.color_btn,
             didOpen:()=>{
                 m.song.menuSubInfoBox(data);
@@ -177,9 +173,11 @@ class Songs{
         t_table_info+='</table>';
         t_table_info+='<div id="all_btn_dock"></div>';
         Swal.fire({
+            icon:"info",
             title:data.name,
             html:t_table_info,
             confirmButtonColor: cr.color_btn,
+            iconColor: cr.color_btn,
             didOpen:()=>{
                 m.song.menuSubInfoBox(data);
             }
