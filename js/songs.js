@@ -15,23 +15,27 @@ class Songs{
         $(container).append(this.list_country);
         $(container).append(this.emp_list_song);
         
-        $.getJSON("https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json", function(data) {
+        if(this.list_song.length==0){
+            $.getJSON("https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json", function(data) {
     
-            $.each(data.all_item, function(index, song) {
-                var obj_artist={"name":song.artist,"lang":song.lang};
-                m.addOrUpdateObjectToList(m.list_artist,obj_artist);
-
-                var obj_year={"name":song.year,"lang":song.lang};
-                m.addOrUpdateObjectToList(m.list_year,obj_year);
-
-                var obj_lang={"name":song.lang,"lang":song.lang};
-                m.addOrUpdateObjectToList(m.song.list_lang,obj_lang);
-                m.song.list_song.push(song);
+                $.each(data.all_item, function(index, song) {
+                    var obj_artist={"name":song.artist,"lang":song.lang};
+                    m.addOrUpdateObjectToList(m.list_artist,obj_artist);
+    
+                    var obj_year={"name":song.year,"lang":song.lang};
+                    m.addOrUpdateObjectToList(m.list_year,obj_year);
+    
+                    var obj_lang={"name":song.lang,"lang":song.lang};
+                    m.addOrUpdateObjectToList(m.song.list_lang,obj_lang);
+                    m.song.list_song.push(song);
+                });
+    
+                m.song.showListSongByData(m.song.list_song);
             });
-
+        }else{
             m.song.showListSongByData(m.song.list_song);
-            m.song.showListCountry();
-        });
+        }
+     
     }
 
     showListSongByData(data){
