@@ -8,6 +8,14 @@ class Music{
         cr.loadJs("js/songs.js","song");
     }
 
+    show_list_year(){
+        cr.loadJs("js/songs_year.js","song_year","show");
+    }
+
+    show_list_artist(){
+        cr.loadJs("js/songs_artist.js","song_artist","show");
+    }
+
     addOrUpdateObjectToList(list_obj, data_obj_add) {
         var addedOrUpdate = false;
         for (var i = 0; i < list_obj.length; i++) {
@@ -49,10 +57,6 @@ class Music{
         a.download = file_name;
         a.click();
         URL.revokeObjectURL(url);
-    }
-
-    show_list_year(){
-        cr.loadJs("js/songs_year.js","song_year","show");
     }
 }
 
