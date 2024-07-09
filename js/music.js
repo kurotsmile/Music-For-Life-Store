@@ -1,24 +1,13 @@
 class Music{
     list_artist=[];
     list_year=[];
+    lang="en";
 
     onLoad(){
-        m.loadJs("js/songs.js","song");
+        cr.set_color_btn("#ff8c00");
+        cr.loadJs("js/songs.js","song");
     }
 
-    loadJs(path_js, obj_call, func_call = "show") {
-        if(window[obj_call]!=null){
-            window[obj_call][func_call]();
-        }else{
-            $.getScript(path_js).done(function(script, textStatus) {
-                if(obj_call!=null) window[obj_call][func_call]();
-            })
-            .fail(function(jqxhr, settings, exception) {
-                console.log("Script loading failed: " + exception);
-            });
-        }
-    }
-    
     addOrUpdateObjectToList(list_obj, data_obj_add) {
         var addedOrUpdate = false;
         for (var i = 0; i < list_obj.length; i++) {
@@ -62,44 +51,6 @@ class Music{
         URL.revokeObjectURL(url);
     }
 
-    async pay(){
-        if (!window.PaymentRequest) {
-            alert('Web Payments API is not supported in this browser.');
-            return;
-        }
-
-        const paymentMethods = [{
-            supportedMethods: 'basic-card',
-            data: {
-                supportedNetworks: ['visa', 'mastercard', 'amex']
-            }
-        }];
-
-        const paymentDetails = {
-            displayItems: [
-                {
-                    label: 'Music For Life Subscription',
-                    amount: { currency: 'USD', value: '9.99' }
-                }
-            ],
-            total: {
-                label: 'Total',
-                amount: { currency: 'USD', value: '9.99' }
-            }
-        };
-
-        try {
-            const request = new PaymentRequest(paymentMethods, paymentDetails);
-
-            const paymentResponse = await request.show();
-            await paymentResponse.complete('success');
-            alert('Payment successful!');
-        } catch (err) {
-            console.error(err);
-            alert('Payment failed or was cancelled.');
-        }
-    }
-
     show_list_year(){
         m.loadJs("js/songs_year.js","song_year","show");
     }
@@ -110,10 +61,9 @@ $(document).ready(function() {
     m=new Music();
     m.onLoad();
 
-     // Scroll to top button functionality
-     var scrollTopBtn = $("#scrollTopBtn");
+    var scrollTopBtn = $("#scrollTopBtn");
 
-     $(window).scroll(function() {
+    $(window).scroll(function() {
          var windowHeight = $(window).height();
          var scrollHeight = $(document).height();
          var scrollTop = $(window).scrollTop();
@@ -124,12 +74,12 @@ $(document).ready(function() {
              scrollTopBtn.fadeOut();
          }
  
-         var scrollRight = ($(window).width() - $('.container').offset().left - $('.container').width()) / 2 - 50; // 50px offset từ lề phải
+         var scrollRight = ($(window).width() - $('.container').offset().left - $('.container').width()) / 2 - 50;
          scrollTopBtn.css('right', scrollRight);
-     });
+    });
  
-     scrollTopBtn.click(function() {
+    scrollTopBtn.click(function() {
          $("html, body").animate({ scrollTop: 0 }, "slow");
          return false;
-     });
+    });
 });

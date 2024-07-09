@@ -55,40 +55,12 @@ class Songs{
                 $('#play-btn').html('&#10074;&#10074;'); // Pause icon
             });
 
-            // Add click event for each song item info button
-            $('.song-info-btn').click(function() {
-                var songTitle = $(this).closest('.song-item').data('title');
-                var songArtist = $(this).closest('.song-item').data('artist');
-                var songSrc = $(this).closest('.song-item').data('src');
-
-                // Prepare data for SweetAlert2 modal
-                var htmlContent = `<table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">Title</th>
-                                                <td>${songTitle}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Artist</th>
-                                                <td>${songArtist}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Source</th>
-                                                <td>${songSrc}</td>
-                                            </tr>
-                                            <!-- Add more rows for other song details as needed -->
-                                        </tbody>
-                                    </table>`;
-
-                // Display SweetAlert2 modal
-                Swal.fire({
-                    title: 'Song Information',
-                    html: htmlContent,
-                    icon: 'info',
-                    confirmButtonText: 'Close'
-                });
-            });
+            m.song.showListCountry();
         });
+    }
+
+    showListCountry(){
+        $("#song-list").after("thanh");
     }
 }
 var song=new Songs();

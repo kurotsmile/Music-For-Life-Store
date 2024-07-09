@@ -4,9 +4,9 @@ class Songs_year{
         var songList = $("#song-list");
         $.each(m.list_year,function(index,y){
             var songItem = `<div role="button" class="song-item">
-            <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
+            <img src="images/year_music.png" alt="Avatar" class="song-avatar">
             <div class="song-title">${y.name}</div>
-            <div class="song-artist">${y.amount}</div>
+            <div class="song-artist">${y.amount} (${y.lang})</div>
             </div>`;
             songList.append(songItem);
         });
