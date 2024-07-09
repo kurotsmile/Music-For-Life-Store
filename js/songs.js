@@ -5,6 +5,7 @@ class Songs{
     list_country=null;
 
     emp_list_song=null;
+    lang="all";
 
     show(){
         var container=$("#container");
@@ -94,15 +95,17 @@ class Songs{
     showListCountry(){
         $(m.song.list_country).html('');
 
-        var btn_all_l=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-globe"></i></button>`);
+        var btn_all_l=$(`<button class="btn btn-sm ${(m.song.lang === "all" ? "active" : "all")} m-1 btn-c btn_l"><i class="fas fa-globe"></i></button>`);
         $(m.song.list_country).append(btn_all_l);
         $(btn_all_l).click(()=>{
+            m.song.lang="all";
             m.song.showListSongByData(m.song.list_song);
         });
 
         $.each(m.song.list_lang,function(index,l){
-            var btn_l=$(`<button class="btn btn-sm m-1 btn-c btn_l">${l.name}</button>`);
+            var btn_l=$(`<button class="btn btn-sm ${(m.song.lang === l.name ? "active" : l.name)} m-1 btn-c btn_l">${l.name}</button>`);
             $(btn_l).click(()=>{
+                m.song.lang=l.name;
                 var l_new=m.song.showListSongByMeta("lang",l.name);
                 m.song.showListSongByData(l_new);
             });
