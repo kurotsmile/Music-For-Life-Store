@@ -159,10 +159,8 @@ h1 {
     color: #c82333;
 }
 
-.song-item .btninfo{
+.song-item .btn-extension{
     position: absolute;
-    top: 15px;
-    right: 15px;
     font-size: 21px;
     z-index: 100;
     display: none;
@@ -173,10 +171,31 @@ h1 {
     text-align: center;
 }
 
-.song-item .btninfo i{
+.song-item .btn-extension.btninfo{
+    top: 15px;
+    right: 15px;
+    border-radius: 50%;
+}
+
+.song-item .btn-extension.btnvideo{
+    top: 15px;
+    left: 15px;
+    border-radius: 10%;
+}
+
+.song-item .btn-extension.btnplay{
+    top: 65px;
+    left: 60px;
+    width: 80px;
+    height: 80px;
+    background-color: #ffffffb5 !important;
+    font-size: 55px;
+}
+
+.song-item .btn-extension i{
     color: #dc3545;
 }
 
-.song-item:hover .btninfo{
+.song-item:hover .btn-extension{
     display: block;
 }

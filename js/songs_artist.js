@@ -16,6 +16,7 @@ class Songs_Artist{
     }
 
     loadListByData(data){
+        m.act_menu("m-artist");
         $(this.emp_list_artist).html('');
         $.each(data,function(index,a){
             var artistItem = $(`<div role="button" class="song-item">

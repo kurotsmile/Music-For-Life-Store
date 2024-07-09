@@ -8,12 +8,21 @@ class Music{
         cr.loadJs("js/songs.js","song");
     }
 
+    show_lis_song(){
+        cr.loadJs("js/songs.js","song");
+    }
+
     show_list_year(){
         cr.loadJs("js/songs_year.js","song_year","show");
     }
 
     show_list_artist(){
         cr.loadJs("js/songs_artist.js","song_artist","show");
+    }
+
+    act_menu(id){
+        $(".btn-m").removeClass("text-white");
+        $("#"+id).addClass("text-white");
     }
 
     addOrUpdateObjectToList(list_obj, data_obj_add) {

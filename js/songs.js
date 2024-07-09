@@ -35,10 +35,10 @@ class Songs{
         }else{
             m.song.showListSongByData(m.song.list_song);
         }
-     
     }
 
     showListSongByData(data){
+        m.act_menu("m-music");
         $(m.song.emp_list_song).html('');
             $.each(data, function(index, song) {
                 var obj_artist={"name":song.artist,"lang":song.lang};
@@ -54,19 +54,39 @@ class Songs{
                                     <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
                                     <div class="song-title">${song.name}</div>
                                     <div class="song-artist">${song.artist}</div>
-                                    <div class="btninfo"><i class="fas fa-info-circle"></i></div>
+                                    <div class="btninfo btn-extension"><i class="fas fa-info-circle"></i></div>
+                                    <div class="btnvideo btn-extension"><i class="fab fa-youtube"></i></div>
+                                    <div class="btnplay btn-extension"><i class="fas fa-play-circle"></i></div>
                                 </div>`);
                 var btn_info=$(songItem).find(".btninfo");
                 $(btn_info).click(()=>{
+                    var lyrics='';
+                    var containsHtmlTags = /<\/?[a-z][\s\S]*>/i.test(song.lyrics);
+                    if(containsHtmlTags) lyrics=$(song.lyrics).text();
+                    else lyrics=song.lyrics;
                     Swal.fire({
                         icon:"info",
                         title:song.name,
-                        text:song.lyrics,
+                        text:lyrics,
                         iconColor: cr.color_btn,
                         confirmButtonColor: cr.color_btn
                     });
                     return false;
                 });
+
+                var btn_video=$(songItem).find(".btnvideo");
+                $(btn_video).click(()=>{
+                    var html='<iframe width="100%" height="315" src="https://www.youtube.com/embed/'+m.song.getYouTubeVideoId(song.link_ytb)+'?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+                    Swal.fire({
+                        icon:"info",
+                        title:song.name,
+                        html:html,
+                        iconColor: cr.color_btn,
+                        confirmButtonColor: cr.color_btn
+                    });
+                    return false;
+                });
+
                 $(m.song.emp_list_song).append(songItem);
             });
 
@@ -106,6 +126,12 @@ class Songs{
             });
 
             m.song.showListCountry();
+    }
+
+    getYouTubeVideoId(url) {
+        var regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        var match = url.match(regex);
+        return (match && match[1]) ? match[1] : null;
     }
 
     showListCountry(){

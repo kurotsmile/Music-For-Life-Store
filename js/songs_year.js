@@ -17,6 +17,7 @@ class Songs_year{
     }
 
     loadListByData(data){
+        m.act_menu("m-year");
         $(m.song_year.emp_list_year).html('');
 
         $.each(data,function(index,y){
