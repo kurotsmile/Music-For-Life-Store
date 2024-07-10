@@ -1,3 +1,6 @@
 [submodule "Carrot-Framework-Web"]
 	path = Carrot-Framework-Web
 	url = https://github.com/kurotsmile/Carrot-Framework-Web.git
+[submodule "cr_player"]
+	path = cr_player
+	url = https://github.com/kurotsmile/cr_player.git
