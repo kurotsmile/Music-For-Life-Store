@@ -57,7 +57,7 @@ class Songs {
                                     <div class="song-artist">${song.artist}</div>
                                     
                                     <div class="btnplay btn-extension"><i class="fas fa-play-circle"></i></div>
-                                    <div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>
+                                    
                                 </div>`);
             var btn_info = $('<div class="btninfo btn-extension"><i class="fas fa-info-circle"></i></div>');
 
@@ -85,6 +85,12 @@ class Songs {
                 $(songItem).append(btn_video);
             }
 
+            var btn_download=$('<div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>');
+            $(btn_download).click(()=>{
+                cr.show_pay();
+                return false;
+            });
+            $(songItem).append(btn_download);
             $(m.song.emp_list_song).append(songItem);
         });
 

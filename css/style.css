@@ -5,6 +5,13 @@ body {
     margin: 0;
     padding: 0;
 }
+a{
+    color: #ff7f50;
+}
+a:hover{
+    color: #c82333;
+    text-decoration: none;
+}
 .navbar {
     background-color: #333;
     position: fixed;
