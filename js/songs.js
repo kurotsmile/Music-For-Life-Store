@@ -165,7 +165,7 @@ class Songs {
 
     menuSubInfoBox(data) {
         if (data.lyrics != null) {
-            var btn_lyrics = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "lyrics" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn"><i class="fas fa-comment"></i></button>');
+            var btn_lyrics = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "lyrics" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn"><i class="fas fa-font"></i></button>');
             $(btn_lyrics).click(function () { m.song.showlyrics(data); });
             $("#all_btn_dock").append(btn_lyrics);
         }
@@ -179,6 +179,12 @@ class Songs {
         var btn_info = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "info" ? "active" : "info") + ' m-1 animate__animated animate__bounceIn"><i class="fas fa-info-circle"></i></button>');
         $(btn_info).click(function () { m.song.showInfoByData(data); });
         $("#all_btn_dock").append(btn_info);
+
+        var btn_download = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn"><i class="fas fa-arrow-alt-circle-down"></i></button>');
+        $(btn_download).click(function () {
+            cr.show_pay(data.name);
+         });
+        $("#all_btn_dock").append(btn_download);
 
     }
 
