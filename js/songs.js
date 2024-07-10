@@ -88,6 +88,7 @@ class Songs{
                 $(m.song.emp_list_song).append(songItem);
             });
 
+            /*
             $('.song-item').click(function() {
                 var songSrc = $(this).data('src');
                 var songTitle = $(this).data('title');
@@ -121,6 +122,11 @@ class Songs{
                 });
 
                 $('#play-btn').html('&#10074;&#10074;');
+            });
+            */
+            $('.song-item').click(function() {
+                var songSrc = $(this).data('src');
+                m.cr_player.play(songSrc);
             });
 
             m.song.showListCountry();

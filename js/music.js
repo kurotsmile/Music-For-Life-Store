@@ -6,6 +6,7 @@ class Music{
     onLoad(){
         cr.set_color_btn("#ff8c00");
         cr.loadJs("js/songs.js","song");
+        cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
     }
 
     show_lis_song(){
