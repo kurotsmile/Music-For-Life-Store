@@ -26,7 +26,7 @@ class Songs_Artist{
             </div>`);
 
             $(artistItem).click(function(){
-                var html='<div id="box_list_song"></div>';
+                var html='<div class="text-center"><table class="table table-striped table-hover table-responsive fs-9 w-100 text-break"><tbody id="box_list_song"></tbody></table></div>';
                 Swal.fire({
                     title:a.name,
                     html:html,
@@ -34,7 +34,18 @@ class Songs_Artist{
                     didOpen:()=>{
                         var list_song=m.song.getListSongByMeta('artist',a.name);
                         $.each(list_song,function(index,s){
-                            $("#box_list_song").append('<div>'+s.name+'</div>');
+                            var html='';
+                            html='<tr role="button">';
+                                html+='<th scope="row"><i class="fas fa-music"></i></th>';
+                                html+='<td>'+s.name+'</td>';
+                                html+='<td><i class="fas fa-play" title="Play One"></i></td>';
+                            html+='</tr>';
+                            var item_box=$(html);
+                            $(item_box).click(()=>{
+                                cr_player.play(s.mp3,s.name,s.artist);
+                                Swal.close();
+                            });
+                            $("#box_list_song").append(item_box);
                         });
                     }
                 });
