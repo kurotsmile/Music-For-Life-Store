@@ -3,6 +3,7 @@
 Welcome to **Music For Life Store**, a web platform that offers a vast collection of songs. Users can enjoy features such as listening to music by country, viewing lyrics, and much more. Our platform also integrates various services to call remote APIs for fetching data on song lists, individual songs, artists, and genres.
 
 This project is hosted on GitHub Pages: [Music For Life Store](https://kurotsmile.github.io/Music-For-Life-Store/)
+This project is hosted on Vercel: https://music-for-life-iftj9gxy7-kurotsmiles-projects.vercel.app
 
 ## Features
 
