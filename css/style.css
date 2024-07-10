@@ -98,49 +98,6 @@ h1 {
     content: "↑"; /* Biểu tượng mũi tên lên */
 }
 
-/* Các phần CSS khác không thay đổi */
-.mp3-player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    display: none; /* Ẩn trình phát nhạc */
-    align-items: center;
-    justify-content: space-between;
-}
-.mp3-player.active {
-    display: flex; /* Hiển thị trình phát nhạc khi có lớp active */
-}
-.mp3-player .info {
-    display: flex;
-    align-items: center;
-}
-.mp3-player img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-.mp3-player .controls {
-    display: flex;
-    align-items: center;
-}
-.mp3-player .controls button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 10px;
-}
-.mp3-player .controls button:hover {
-    color: #dc3545; /* Đỏ */
-}
-
 .btn-c{
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);

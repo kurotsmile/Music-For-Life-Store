@@ -88,45 +88,11 @@ class Songs{
                 $(m.song.emp_list_song).append(songItem);
             });
 
-            /*
             $('.song-item').click(function() {
                 var songSrc = $(this).data('src');
                 var songTitle = $(this).data('title');
                 var songArtist = $(this).data('artist');
-
-                $('#player-song-title').text(songTitle);
-                $('#player-song-artist').text(songArtist);
-                $('#mp3-player').find('audio').remove();
-                $('#mp3-player').append(`<audio src="${songSrc}" id="audio-player" controls autoplay></audio>`);
-
-                var audioPlayer = $('#audio-player')[0];
-
-                $('#mp3-player').addClass('active');
-        
-                $('#play-btn').off('click').click(function() {
-                    if (audioPlayer.paused) {
-                        audioPlayer.play();
-                        $(this).html('&#10074;&#10074;');
-                    } else {
-                        audioPlayer.pause();
-                        $(this).html('&#9654;');
-                    }
-                });
-
-                $('#prev-btn').off('click').click(function() {
-                    // Implement previous song functionality if needed
-                });
-
-                $('#next-btn').off('click').click(function() {
-
-                });
-
-                $('#play-btn').html('&#10074;&#10074;');
-            });
-            */
-            $('.song-item').click(function() {
-                var songSrc = $(this).data('src');
-                cr_player.play(songSrc);
+                cr_player.play(songSrc,songTitle);
             });
 
             m.song.showListCountry();
