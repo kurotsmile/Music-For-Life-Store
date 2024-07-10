@@ -1,6 +1,7 @@
 class Music{
     list_artist=[];
     list_year=[];
+    list_genre=[];
     lang="en";
 
     onLoad(){
