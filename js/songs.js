@@ -57,7 +57,7 @@ class Songs {
                                     <div class="song-artist">${song.artist}</div>
                                     
                                     <div class="btnplay btn-extension"><i class="fas fa-play-circle"></i></div>
-                                    <div class="btndownload btn-extension"><i class="fas fa-arrow-alt-circle-down"></i></div>
+                                    <div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>
                                 </div>`);
             var btn_info = $('<div class="btninfo btn-extension"><i class="fas fa-info-circle"></i></div>');
 
@@ -96,6 +96,7 @@ class Songs {
         });
 
         m.song.showListCountry();
+        $("[title]").tooltip();
     }
 
     showVideo(data) {
@@ -239,7 +240,7 @@ class Songs {
     }
 
     showListSongByMeta(filed, val) {
-        var html = '<div class="text-center"><table class="table table-striped table-hover table-responsive fs-9 w-100 text-break"><tbody id="box_list_song"></tbody></table></div>';
+        var html = '<div class="text-center w-100 d-block"><table class="table table-striped table-hover table-responsive fs-9 w-100 text-break"><tbody id="box_list_song"></tbody></table></div>';
         Swal.fire({
             title: val,
             html: html,
@@ -251,13 +252,20 @@ class Songs {
                     html = '<tr role="button">';
                     html += '<th scope="row"><i class="fas fa-music"></i></th>';
                     html += '<td>' + s.name + '</td>';
-                    html += '<td><i class="fas fa-play" title="Play One"></i></td>';
+                    html += '<td class="box_all_btn"><i class="fas fa-play" title="Play One"></i> </td>';
                     html += '</tr>';
                     var item_box = $(html);
                     $(item_box).click(() => {
                         cr_player.play(s.mp3, s.name, s.artist);
                         Swal.close();
                     });
+
+                    var btn_add_song=$('<i class="fas fa-plus-circle"  title="Add song to playlist"></i>');
+                    $(btn_add_song).click(function(){
+                        cr_player.add_song(s.mp3,s.name,s.artist);
+                        return false;
+                    });
+                    $(item_box).find(".box_all_btn").append(btn_add_song);
                     $("#box_list_song").append(item_box);
                 });
             }
