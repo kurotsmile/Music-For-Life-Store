@@ -24,6 +24,21 @@ class Songs_Artist{
             <div class="song-title">${a.name}</div>
             <div class="song-artist"><i class="fas fa-music"></i> ${a.amount} song (<i class="fas fa-globe-asia"></i> ${a.lang})</div>
             </div>`);
+
+            $(artistItem).click(function(){
+                var html='<div id="box_list_song"></div>';
+                Swal.fire({
+                    title:a.name,
+                    html:html,
+                    confirmButtonColor: cr.color_btn,
+                    didOpen:()=>{
+                        var list_song=m.song.getListSongByMeta('artist',a.name);
+                        $.each(list_song,function(index,s){
+                            $("#box_list_song").append('<div>'+s.name+'</div>');
+                        });
+                    }
+                });
+            });
             $(m.song_artist.emp_list_artist).append(artistItem);
         });
         this.showListCountry();

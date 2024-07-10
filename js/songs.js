@@ -92,7 +92,7 @@ class Songs{
                 var songSrc = $(this).data('src');
                 var songTitle = $(this).data('title');
                 var songArtist = $(this).data('artist');
-                cr_player.play(songSrc,songTitle);
+                cr_player.play(songSrc,songTitle,songArtist);
             });
 
             m.song.showListCountry();
@@ -223,14 +223,14 @@ class Songs{
             var btn_l=$(`<button class="btn btn-sm ${(m.song.lang === l.name ? "active" : l.name)} m-1 btn-c btn_l">${l.name}</button>`);
             $(btn_l).click(()=>{
                 m.song.lang=l.name;
-                var l_new=m.song.showListSongByMeta("lang",l.name);
+                var l_new=m.song.getListSongByMeta("lang",l.name);
                 m.song.showListSongByData(l_new);
             });
             $(m.song.list_country).append(btn_l);
         });
     }
 
-    showListSongByMeta(filed,val){
+    getListSongByMeta(filed,val){
         var list_s=[];
         $(m.song.list_song).each(function(index,s){
             if(s[filed]==val) list_s.push(s);
