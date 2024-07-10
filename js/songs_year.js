@@ -21,12 +21,15 @@ class Songs_year{
         $(m.song_year.emp_list_year).html('');
 
         $.each(data,function(index,y){
-            var songItem = `<div role="button" class="song-item">
+            var yearItem = $(`<div role="button" class="song-item">
             <img src="images/timer_music.png" alt="Avatar Year" class="song-avatar">
             <div class="song-title">${y.name}</div>
             <div class="song-artist"><i class="fas fa-music"></i> ${y.amount} song (<i class="fas fa-globe-asia"></i> ${y.lang})</div>
-            </div>`;
-            $(m.song_year.emp_list_year).append(songItem);
+            </div>`);
+            $(yearItem).click(()=>{
+                m.song.showListSongByMeta('year',y.name);
+            });
+            $(m.song_year.emp_list_year).append(yearItem);
         });
         this.showListCountry();
     }
