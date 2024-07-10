@@ -187,3 +187,19 @@ h1 {
 .song-item:hover .btn-extension{
     display: block;
 }
+
+.btn-box{
+    background-color:unset;
+    color: #000;
+    margin: 0px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    border-radius: 50%;
+}
+
+.btn-box:hover{
+    background-color: #ff7f50;
+    color: white;
+}

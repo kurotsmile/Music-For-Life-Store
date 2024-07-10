@@ -3,7 +3,7 @@ class Songs_year{
     emp_list_year="";
     emp_list_country="";
 
-    lang="all";
+    lang="en";
 
     show(){
         var container=$("#container");
@@ -12,7 +12,8 @@ class Songs_year{
         this.emp_list_year=$('<div class="song-list col-12 pl-3 pr-3" id="song-list"></div>');
         $(container).append(this.emp_list_country);
         $(container).append(this.emp_list_year);
-        this.loadListByData(m.list_year);      
+        var l_new=m.song_year.getListByLang(this.lang);
+        this.loadListByData(l_new);      
     }
 
     loadListByData(data){
@@ -35,13 +36,6 @@ class Songs_year{
 
     showListCountry(){
         $(this.emp_list_country).html('');
-
-        var btn_all_l=$(`<button class="btn btn-sm ${(m.song_year.lang === "all" ? "active" : "all")} m-1 btn-c btn_l"><i class="fas fa-globe"></i></button>`);
-        $(this.emp_list_country).append(btn_all_l);
-        $(btn_all_l).click(()=>{
-            m.song_year.lang="all";
-            m.song_year.loadListByData(m.list_year);
-        });
 
         $.each(m.song.list_lang,function(index,l){
             var btn_l=$(`<button class="btn btn-sm ${(m.song_year.lang === l.name ? "active" : l.name)} m-1 btn-c btn_l">${l.name}</button>`);

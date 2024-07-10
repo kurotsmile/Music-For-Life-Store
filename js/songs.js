@@ -199,7 +199,7 @@ class Songs {
 
         if (val != '') {
             html = '<tr>';
-            html += '<th scope="row"><i class="fas fa-info"></i> ' + k + '</th>';
+            html += '<td><i class="fas fa-info"></i> ' + k + '</td>';
             html += '<td>' + val + '</td>';
             html += '<td>' + btn_extension + '</td>';
             html += '</tr>';
@@ -237,13 +237,19 @@ class Songs {
     getListSongByMeta(filed, val) {
         var list_s = [];
         $(m.song.list_song).each(function (index, s) {
-            if (s[filed] == val) list_s.push(s);
+            if(filed=='year'){
+                if (s[filed] == val&&m.song_year.lang==s.lang) list_s.push(s);
+            }
+            else{
+                if (s[filed] == val) list_s.push(s);
+            }
+            
         });
         return list_s;
     }
 
     showListSongByMeta(filed, val) {
-        var html = '<div class="text-center w-100 d-block"><table class="table table-striped table-hover table-responsive fs-9 w-100 text-break"><tbody id="box_list_song"></tbody></table></div>';
+        var html = '<div class="container-fluid"><div class="row"><div class="col-12"><table class="table table-striped table-hover table-responsive fs-9 w-100 "><tbody id="box_list_song"></tbody></table></div></div></div>';
         Swal.fire({
             title: val,
             html: html,
@@ -252,11 +258,12 @@ class Songs {
                 var list_song = m.song.getListSongByMeta(filed, val);
                 $.each(list_song, function (index, s) {
                     var html = '';
-                    html = '<tr role="button">';
-                    html += '<th scope="row"><i class="fas fa-music"></i></th>';
-                    html += '<td>' + s.name + '</td>';
-                    html += '<td><i class="fas fa-play" title="Play One"></i></td>';
-                    html += '<td class="box_all_btn"></td>';
+                    html = '<tr role="button" class="w-100">';
+                    html += '<td style="width:5%"><i class="fas fa-music"></i></td>';
+                    html += '<td style="width:80%">' + s.name + '</td>';
+                    html += '<td style="width:5%"><button class="btn btn-sm btn-dark btn-box"><i class="fas fa-play" title="Play One"></i></button></td>';
+                    html += '<td class="col_1" style="width:5%"></td>';
+                    html += '<td class="col_2" style="width:5%"></td>';
                     html += '</tr>';
                     var item_box = $(html);
                     $(item_box).click(() => {
@@ -264,12 +271,19 @@ class Songs {
                         Swal.close();
                     });
 
-                    var btn_add_song = $('<i class="fas fa-plus-circle"  title="Add song to playlist"></i>');
+                    var btn_add_song = $('<button class="btn btn-sm btn-dark btn-box"><i class="fas fa-plus-circle"  title="Add song to playlist"></i></button>');
                     $(btn_add_song).click(function () {
                         cr_player.add_song(s.mp3, s.name, s.artist);
                         return false;
                     });
-                    $(item_box).find(".box_all_btn").append(btn_add_song);
+                    $(item_box).find(".col_1").append(btn_add_song);
+
+                    var btn_info=$('<button class="btn btn-sm btn-dark btn-box"><i class="fas fa-info-circle"></i></button>');
+                    $(btn_info).click(()=>{
+                        m.song.showInfoByData(s);
+                        return false;
+                    })
+                    $(item_box).find(".col_2").append(btn_info);
                     $("#box_list_song").append(item_box);
                 });
             }
