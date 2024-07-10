@@ -126,7 +126,7 @@ class Songs{
             */
             $('.song-item').click(function() {
                 var songSrc = $(this).data('src');
-                m.cr_player.play(songSrc);
+                cr_player.play(songSrc);
             });
 
             m.song.showListCountry();
