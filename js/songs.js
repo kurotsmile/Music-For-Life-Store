@@ -20,15 +20,12 @@ class Songs {
             $.getJSON("https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json", function (data) {
 
                 $.each(data.all_item, function (index, song) {
-                    if(m.list_artist.length==0){
-                        var obj_artist = { "name": song.artist, "lang": song.lang };
-                        m.addOrUpdateObjectToList(m.list_artist, obj_artist);
-                    }
-                    
-                    if(m.list_year.length==0){
-                        var obj_year = { "name": song.year, "lang": song.lang };
-                        m.addOrUpdateObjectToList(m.list_year, obj_year);    
-                    }
+
+                    var obj_artist = { "name": song.artist, "lang": song.lang };
+                    m.addOrUpdateObjectToList(m.list_artist, obj_artist);
+
+                    var obj_year = { "name": song.year, "lang": song.lang };
+                    m.addOrUpdateObjectToList(m.list_year, obj_year);
 
                     var obj_lang = { "name": song.lang, "lang": song.lang };
                     m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
@@ -46,14 +43,6 @@ class Songs {
         m.act_menu("m-music");
         $(m.song.emp_list_song).html('');
         $.each(data, function (index, song) {
-            var obj_artist = { "name": song.artist, "lang": song.lang };
-            m.addOrUpdateObjectToList(m.list_artist, obj_artist);
-
-            var obj_year = { "name": song.year, "lang": song.lang };
-            m.addOrUpdateObjectToList(m.list_year, obj_year);
-
-            var obj_lang = { "name": song.lang, "lang": song.lang };
-            m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
 
             var songItem = $(`<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
                                     <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
@@ -87,8 +76,8 @@ class Songs {
                 $(songItem).append(btn_video);
             }
 
-            var btn_download=$('<div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>');
-            $(btn_download).click(()=>{
+            var btn_download = $('<div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>');
+            $(btn_download).click(() => {
                 cr.show_pay();
                 return false;
             });
@@ -185,7 +174,7 @@ class Songs {
         var btn_download = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn"><i class="fas fa-arrow-alt-circle-down"></i></button>');
         $(btn_download).click(function () {
             cr.show_pay(data.name);
-         });
+        });
         $("#all_btn_dock").append(btn_download);
 
     }
@@ -200,7 +189,7 @@ class Songs {
                 btn_extension = '<a target="_blank" href="' + v + '" class="btn btn-sm btn-dark"><i class="fas fa-external-link-square-alt"></i></a>';
                 break;
             case "artist":
-                btn_extension = '<a onclick="m.song.showListSongByMeta(\'artist\',\''+v+'\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
+                btn_extension = '<a onclick="m.song.showListSongByMeta(\'artist\',\'' + v + '\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
                 val = v;
                 break;
             default:
@@ -275,9 +264,9 @@ class Songs {
                         Swal.close();
                     });
 
-                    var btn_add_song=$('<i class="fas fa-plus-circle"  title="Add song to playlist"></i>');
-                    $(btn_add_song).click(function(){
-                        cr_player.add_song(s.mp3,s.name,s.artist);
+                    var btn_add_song = $('<i class="fas fa-plus-circle"  title="Add song to playlist"></i>');
+                    $(btn_add_song).click(function () {
+                        cr_player.add_song(s.mp3, s.name, s.artist);
                         return false;
                     });
                     $(item_box).find(".box_all_btn").append(btn_add_song);

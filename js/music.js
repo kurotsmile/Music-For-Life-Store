@@ -10,8 +10,8 @@ class Music{
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
     }
 
-    show_lis_song(){
-        cr.loadJs("js/songs.js","song");
+    show_list_song(){
+        m.song.show();
     }
 
     show_list_year(){

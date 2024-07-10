@@ -6,7 +6,6 @@ class Songs_year{
     lang="all";
 
     show(){
-
         var container=$("#container");
         $(container).html('');
         this.emp_list_country=$('<div class="col-12 text-center mb-2" id="list_country"></div>');
