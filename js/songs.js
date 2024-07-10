@@ -20,11 +20,15 @@ class Songs {
             $.getJSON("https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json", function (data) {
 
                 $.each(data.all_item, function (index, song) {
-                    var obj_artist = { "name": song.artist, "lang": song.lang };
-                    m.addOrUpdateObjectToList(m.list_artist, obj_artist);
-
-                    var obj_year = { "name": song.year, "lang": song.lang };
-                    m.addOrUpdateObjectToList(m.list_year, obj_year);
+                    if(m.list_artist.length==0){
+                        var obj_artist = { "name": song.artist, "lang": song.lang };
+                        m.addOrUpdateObjectToList(m.list_artist, obj_artist);
+                    }
+                    
+                    if(m.list_year.length==0){
+                        var obj_year = { "name": song.year, "lang": song.lang };
+                        m.addOrUpdateObjectToList(m.list_year, obj_year);    
+                    }
 
                     var obj_lang = { "name": song.lang, "lang": song.lang };
                     m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
@@ -55,11 +59,9 @@ class Songs {
                                     <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
                                     <div class="song-title">${song.name}</div>
                                     <div class="song-artist">${song.artist}</div>
-                                    
-                                    <div class="btnplay btn-extension"><i class="fas fa-play-circle"></i></div>
-                                    
+                                    <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
                                 </div>`);
-            var btn_info = $('<div class="btninfo btn-extension"><i class="fas fa-info-circle"></i></div>');
+            var btn_info = $('<div class="btninfo btn-extension" title="Info"><i class="fas fa-info-circle"></i></div>');
 
             $(btn_info).click(() => {
                 m.song.showInfoByData(song);
@@ -68,7 +70,7 @@ class Songs {
             $(songItem).append(btn_info);
 
             if (song.lyrics != null && song.lyrics != "") {
-                var btnlyrics = $('<div class="btnlyrics btn-extension"><i class="fas fa-font"></i></div>');
+                var btnlyrics = $('<div class="btnlyrics btn-extension" title="Lyrics"><i class="fas fa-font"></i></div>');
                 $(btnlyrics).click(() => {
                     m.song.showlyrics(song);
                     return false;
@@ -77,7 +79,7 @@ class Songs {
             }
 
             if (song.link_ytb != null) {
-                var btn_video = $('<div class="btnvideo btn-extension"><i class="fab fa-youtube"></i></div>');
+                var btn_video = $('<div class="btnvideo btn-extension" title="Watch video"><i class="fab fa-youtube"></i></div>');
                 $(btn_video).click(() => {
                     m.song.showVideo(song);
                     return false;
@@ -264,7 +266,8 @@ class Songs {
                     html = '<tr role="button">';
                     html += '<th scope="row"><i class="fas fa-music"></i></th>';
                     html += '<td>' + s.name + '</td>';
-                    html += '<td class="box_all_btn"><i class="fas fa-play" title="Play One"></i> </td>';
+                    html += '<td><i class="fas fa-play" title="Play One"></i></td>';
+                    html += '<td class="box_all_btn"></td>';
                     html += '</tr>';
                     var item_box = $(html);
                     $(item_box).click(() => {
