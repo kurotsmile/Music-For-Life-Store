@@ -107,6 +107,12 @@ class Music{
             if(m.m_menu=="m-genre") m.show_list_genre();
         });
     }
+
+    show_pp(){
+        cr.show_pp("#container",()=>{
+            m.act_menu("m-pp");
+        });
+    }
 }
 
 var m;

@@ -204,21 +204,39 @@ h1 {
     color: white;
 }
 
-#container-about{
+#container-about,#container .service{
     color: #000;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
 }
 
-#container-about a,footer a{
+#container .service{
+    padding: 20px;
+}
+
+#container-about a,footer a,#container .service a{
     color:#810d18;
 }
 
-#container-about a:hover,footer a:hover{
-    color:antiquewhite;
+#container-about a:hover,#container .service a:hover{
+    color:rgb(202, 116, 3)
+}
+
+footer a:hover{
+    color: antiquewhite;
 }
 
 footer{
     color: #111 !important;
     text-align: center;
+}
+
+.fa-solid{
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+}
+
+.fa-brands{
+    font-family:"Font Awesome 5 Brands";
+    font-style: normal;
 }
