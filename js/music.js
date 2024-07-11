@@ -7,6 +7,7 @@ class Music{
     m_menu="";
 
     onLoad(){
+        cr.setSiteName("Music For Life Store");
         cr.set_color_btn("#ff8c00");
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
@@ -113,6 +114,7 @@ class Music{
     show_pp(){
         cr.show_pp("#container",()=>{
             m.act_menu("m-pp");
+            cr.top();
         });
     }
 }
