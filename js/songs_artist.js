@@ -6,13 +6,20 @@ class Songs_Artist{
     lang="all";
 
     show(){
+        this.lang=m.lang;
         var container=$("#container");
         $(container).html('');
         this.emp_list_country=$('<div class="col-12 text-center mb-2" id="list_country"></div>');
         this.emp_list_artist=$('<div class="song-list col-12 pl-3 pr-3" id="song-list"></div>');
         $(container).append(this.emp_list_country);
         $(container).append(this.emp_list_artist);
-        this.loadListByData(m.list_artist);
+
+        if(this.lang=="all")
+            this.loadListByData(m.list_artist);
+        else{
+            var l_new=m.song_artist.getListByLang(this.lang);
+            m.song_artist.loadListByData(l_new);
+        }
     }
 
     loadListByData(data){

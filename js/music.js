@@ -4,6 +4,8 @@ class Music{
     list_genre=[];
     lang="en";
 
+    m_menu="";
+
     onLoad(){
         cr.set_color_btn("#ff8c00");
         cr.loadJs("js/songs.js","song");
@@ -29,6 +31,7 @@ class Music{
     act_menu(id){
         $(".btn-m").removeClass("text-white");
         $("#"+id).addClass("text-white");
+        this.m_menu=id;
     }
 
     addOrUpdateObjectToList(list_obj, data_obj_add) {
@@ -89,6 +92,20 @@ class Music{
         a.download = file_name;
         a.click();
         URL.revokeObjectURL(url);
+    }
+
+    show_setting(){
+        cr.show_setting((setting)=>{
+            m.lang=setting.lang;
+            m.song.lang=m.lang;
+            if(m.song_artist!=null) m.song_artist.lang=m.lang;
+            if(m.song_year!=null) m.song_year.lang=m.lang;
+            if(m.song_genre!=null) m.song_genre.lang=m.lang;
+            if(m.m_menu=="m-music") m.show_list_song();
+            if(m.m_menu=="m-artist") m.show_list_artist();
+            if(m.m_menu=="m-year") m.show_list_year();
+            if(m.m_menu=="m-genre") m.show_list_genre();
+        });
     }
 }
 

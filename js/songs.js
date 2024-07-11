@@ -5,10 +5,11 @@ class Songs {
     list_country = null;
 
     emp_list_song = null;
-    lang = "all";
+    lang = "en";
     box_info_menu_cur = "none";
 
     show() {
+        this.lang=m.lang;
         var container = $("#container");
         $(container).html('');
         this.list_country = $('<div class="col-12 text-center mb-2" id="list_country"></div>');
@@ -35,10 +36,19 @@ class Songs {
                     m.song.list_song.push(song);
                 });
 
-                m.song.showListSongByData(m.song.list_song);
+                m.song.showListSong();
             });
         } else {
+            this.showListSong();
+        }
+    }
+
+    showListSong(){
+        if(this.lang=="all")
             m.song.showListSongByData(m.song.list_song);
+        else{
+            var l_new = m.song.getListSongByMeta("lang", this.lang);
+            m.song.showListSongByData(l_new);
         }
     }
 
