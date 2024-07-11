@@ -6,6 +6,8 @@ class Music{
 
     m_menu="";
 
+    file_avatar=["",""];
+
     onLoad(){
         cr.setSiteName("Music For Life Store");
         cr.set_color_btn("#ff8c00");
@@ -114,6 +116,13 @@ class Music{
     show_pp(){
         cr.show_pp("#container",()=>{
             m.act_menu("m-pp");
+            cr.top();
+        });
+    }
+
+    show_tos(){
+        cr.show_tos("#container",()=>{
+            m.act_menu("m-tos");
             cr.top();
         });
     }
