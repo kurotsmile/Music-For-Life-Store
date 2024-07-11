@@ -10,6 +10,7 @@ class Music{
         cr.set_color_btn("#ff8c00");
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
+        cr.addHandlebars();
     }
 
     show_list_song(){
@@ -105,6 +106,7 @@ class Music{
             if(m.m_menu=="m-artist") m.show_list_artist();
             if(m.m_menu=="m-year") m.show_list_year();
             if(m.m_menu=="m-genre") m.show_list_genre();
+            if(m.m_menu=="m-pp") m.show_pp();
         });
     }
 
