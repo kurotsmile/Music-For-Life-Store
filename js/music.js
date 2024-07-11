@@ -8,6 +8,8 @@ class Music{
 
     file_avatar=["avatar_music.png","song_1.png","song_2.png","song_3.png","song_4.png","song_5.png","song_6.png","song_7.png"];
 
+    url_data="https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json";
+
     onLoad(){
         cr.setSiteName("Music For Life Store");
         cr.set_color_btn("#ff8c00");
@@ -132,7 +134,8 @@ class Music{
 
     show_search(){
         cr.showSearch((val)=>{
-            alert(val);
+            m.key_search=val;
+            cr.loadJs("js/search.js","search","show");
         });
     }
 }
