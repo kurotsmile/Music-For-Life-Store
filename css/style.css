@@ -203,3 +203,13 @@ h1 {
     background-color: #ff7f50;
     color: white;
 }
+
+#container-about{
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+#container-about a{
+    color:#810d18;
+}

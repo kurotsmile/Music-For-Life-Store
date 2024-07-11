@@ -47,6 +47,16 @@ class Music{
         }
     }
 
+    show_about(){
+        this.act_menu("m-about");
+        var lang_show="";
+        if(this.lang=="all")
+            lang_show="en";
+        else
+            lang_show=this.lang;
+        $("#container").load("about/"+lang_show+".html");
+    }
+
     donwload_artist(){
         var data_download={};
         data_download["all_item"]=m.list_artist;
