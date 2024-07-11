@@ -27,6 +27,9 @@ class Songs {
                     var obj_year = { "name": song.year, "lang": song.lang };
                     m.addOrUpdateObjectToList(m.list_year, obj_year);
 
+                    var obj_genre = { "name": song.genre, "lang": song.lang };
+                    m.addOrUpdateObjectToList(m.list_genre, obj_genre);
+
                     var obj_lang = { "name": song.lang, "lang": song.lang };
                     m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
                     m.song.list_song.push(song);
@@ -240,6 +243,9 @@ class Songs {
             if(filed=='year'){
                 if (s[filed] == val&&m.song_year.lang==s.lang) list_s.push(s);
             }
+            else if(filed=='genre'){
+                if (s[filed] == val&&m.song_genre.lang==s.lang) list_s.push(s);
+            }
             else{
                 if (s[filed] == val) list_s.push(s);
             }
@@ -261,7 +267,7 @@ class Songs {
                     html = '<tr role="button" class="w-100">';
                     html += '<td style="width:5%"><i class="fas fa-music"></i></td>';
                     html += '<td style="width:80%">' + s.name + '</td>';
-                    html += '<td style="width:5%"><button class="btn btn-sm btn-dark btn-box"><i class="fas fa-play" title="Play One"></i></button></td>';
+                    html += '<td style="width:5%"><button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-play" title="Play One"></i></button></td>';
                     html += '<td class="col_1" style="width:5%"></td>';
                     html += '<td class="col_2" style="width:5%"></td>';
                     html += '</tr>';
@@ -271,14 +277,14 @@ class Songs {
                         Swal.close();
                     });
 
-                    var btn_add_song = $('<button class="btn btn-sm btn-dark btn-box"><i class="fas fa-plus-circle"  title="Add song to playlist"></i></button>');
+                    var btn_add_song = $('<button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-plus-circle"  title="Add song to playlist"></i></button>');
                     $(btn_add_song).click(function () {
                         cr_player.add_song(s.mp3, s.name, s.artist);
                         return false;
                     });
                     $(item_box).find(".col_1").append(btn_add_song);
 
-                    var btn_info=$('<button class="btn btn-sm btn-dark btn-box"><i class="fas fa-info-circle"></i></button>');
+                    var btn_info=$('<button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-info-circle"></i></button>');
                     $(btn_info).click(()=>{
                         m.song.showInfoByData(s);
                         return false;

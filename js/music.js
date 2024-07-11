@@ -22,6 +22,10 @@ class Music{
         cr.loadJs("js/songs_artist.js","song_artist","show");
     }
 
+    show_list_genre(){
+        cr.loadJs("js/songs_genre.js","song_genre","show");
+    }
+
     act_menu(id){
         $(".btn-m").removeClass("text-white");
         $("#"+id).addClass("text-white");
