@@ -6,7 +6,7 @@ class Music{
 
     m_menu="";
 
-    file_avatar=["",""];
+    file_avatar=["avatar_music.png","song_1.png","song_2.png","song_3.png","song_4.png","song_5.png","song_6.png","song_7.png"];
 
     onLoad(){
         cr.setSiteName("Music For Life Store");

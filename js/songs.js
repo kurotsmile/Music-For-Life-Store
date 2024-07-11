@@ -55,10 +55,12 @@ class Songs {
     showListSongByData(data) {
         m.act_menu("m-music");
         $(m.song.emp_list_song).html('');
+        var index_random=Math.floor(Math.random() * m.file_avatar.length);
+        var file_avatar_song=m.file_avatar[index_random];
         $.each(data, function (index, song) {
 
             var songItem = $(`<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
-                                    <img src="images/avatar_music.png" alt="Avatar" class="song-avatar">
+                                    <img src="images/${file_avatar_song}" alt="Avatar" class="song-avatar">
                                     <div class="song-title">${song.name}</div>
                                     <div class="song-artist">${song.artist}</div>
                                     <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
