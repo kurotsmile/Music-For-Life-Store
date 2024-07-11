@@ -10,7 +10,7 @@ class Music{
         cr.set_color_btn("#ff8c00");
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
-        cr.addHandlebars();
+        cr.onLoad();
     }
 
     show_list_song(){
