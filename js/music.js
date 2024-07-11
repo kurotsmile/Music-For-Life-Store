@@ -117,6 +117,12 @@ class Music{
             cr.top();
         });
     }
+
+    show_search(){
+        cr.showSearch((val)=>{
+            alert(val);
+        });
+    }
 }
 
 var m;
