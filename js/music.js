@@ -61,7 +61,10 @@ class Music{
             lang_show="en";
         else
             lang_show=this.lang;
-        $("#container").load("about/"+lang_show+".html");
+
+        cr.get("about/"+lang_show+".html",(data)=>{
+            $("#container").html(data);
+        });
     }
 
     donwload_artist(){
