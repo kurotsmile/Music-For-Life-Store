@@ -26,7 +26,7 @@ class Songs_Artist{
             </div>`);
 
             $(artistItem).click(function(){
-                m.song.showListSongByMeta('artist',a.name);
+                m.song.showListSongByMeta('artist',a.name,m.song_artist.lang);
             });
             $(m.song_artist.emp_list_artist).append(artistItem);
         });

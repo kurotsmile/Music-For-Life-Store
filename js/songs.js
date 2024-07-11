@@ -179,7 +179,6 @@ class Songs {
             cr.show_pay(data.name);
         });
         $("#all_btn_dock").append(btn_download);
-
     }
 
     getValByKeyTable(k, v) {
@@ -192,7 +191,11 @@ class Songs {
                 btn_extension = '<a target="_blank" href="' + v + '" class="btn btn-sm btn-dark"><i class="fas fa-external-link-square-alt"></i></a>';
                 break;
             case "artist":
-                btn_extension = '<a onclick="m.song.showListSongByMeta(\'artist\',\'' + v + '\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
+                btn_extension = '<a onclick="m.song.showListSongByMeta(\'artist\',\'' + v + '\',\''+m.song.lang+'\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
+                val = v;
+                break;
+            case "genre":
+                btn_extension = '<a onclick="m.song.showListSongByMeta(\'genre\',\'' + v + '\',\''+m.song.lang+'\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
                 val = v;
                 break;
             default:
@@ -237,31 +240,26 @@ class Songs {
         });
     }
 
-    getListSongByMeta(filed, val) {
+    getListSongByMeta(filed, val,lang=null) {
         var list_s = [];
         $(m.song.list_song).each(function (index, s) {
-            if(filed=='year'){
-                if (s[filed] == val&&m.song_year.lang==s.lang) list_s.push(s);
-            }
-            else if(filed=='genre'){
-                if (s[filed] == val&&m.song_genre.lang==s.lang) list_s.push(s);
-            }
-            else{
+            if(lang!=null&&lang!="all"){
+                if (s[filed] == val&&lang==s.lang) list_s.push(s);
+            }else{
                 if (s[filed] == val) list_s.push(s);
-            }
-            
+            }  
         });
         return list_s;
     }
 
-    showListSongByMeta(filed, val) {
+    showListSongByMeta(filed, val,lang=null) {
         var html = '<div class="container-fluid"><div class="row"><div class="col-12"><table class="table table-striped table-hover table-responsive fs-9 w-100 "><tbody id="box_list_song"></tbody></table></div></div></div>';
         Swal.fire({
             title: val,
             html: html,
             confirmButtonColor: cr.color_btn,
             didOpen: () => {
-                var list_song = m.song.getListSongByMeta(filed, val);
+                var list_song = m.song.getListSongByMeta(filed, val,lang);
                 $.each(list_song, function (index, s) {
                     var html = '';
                     html = '<tr role="button" class="w-100">';

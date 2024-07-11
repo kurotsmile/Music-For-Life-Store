@@ -60,6 +60,13 @@ class Music{
         data_download["collection"]='song_year';
         m.download_json(data_download,"song_year.json");
     }
+
+    donwload_genre(){
+        var data_download={};
+        data_download["all_item"]=m.list_genre;
+        data_download["collection"]='song_genre';
+        m.download_json(data_download,"song_genre.json");
+    }
     
     download_json(data,file_name){
         var jsonString = JSON.stringify(data);

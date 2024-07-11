@@ -27,7 +27,7 @@ class Songs_year{
             <div class="song-artist"><i class="fas fa-music"></i> ${y.amount} song (<i class="fas fa-globe-asia"></i> ${y.lang})</div>
             </div>`);
             $(yearItem).click(()=>{
-                m.song.showListSongByMeta('year',y.name);
+                m.song.showListSongByMeta('year',y.name,m.song_year.lang);
             });
             $(m.song_year.emp_list_year).append(yearItem);
         });

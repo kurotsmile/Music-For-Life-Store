@@ -27,7 +27,7 @@ class Songs_Genre{
             <div class="song-artist"><i class="fas fa-music"></i> ${g.amount} song (<i class="fas fa-globe-asia"></i> ${g.lang})</div>
             </div>`);
             $(genreItem).click(()=>{
-                m.song.showListSongByMeta('genre',g.name);
+                m.song.showListSongByMeta('genre',g.name,m.song_genre.lang);
             });
             $(m.song_genre.emp_list_genre).append(genreItem);
         });
@@ -50,7 +50,7 @@ class Songs_Genre{
         var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
         $(m.song_genre.emp_list_country).append(btn_download);
         $(btn_download).click(()=>{
-            m.donwload_year();
+            m.donwload_genre();
         });
     }
 
