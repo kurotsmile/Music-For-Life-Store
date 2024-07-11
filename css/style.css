@@ -210,6 +210,15 @@ h1 {
     border-radius: 10px;
 }
 
-#container-about a{
+#container-about a,footer a{
     color:#810d18;
+}
+
+#container-about a:hover,footer a:hover{
+    color:antiquewhite;
+}
+
+footer{
+    color: #111 !important;
+    text-align: center;
 }
