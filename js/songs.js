@@ -7,9 +7,10 @@ class Songs {
     emp_list_song = null;
     lang = "en";
     box_info_menu_cur = "none";
+    file_avatar_song = "";
 
     show() {
-        this.lang=m.lang;
+        this.lang = m.lang;
         var container = $("#container");
         $(container).html('');
         this.list_country = $('<div class="col-12 text-center mb-2" id="list_country"><div><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>');
@@ -43,61 +44,26 @@ class Songs {
         }
     }
 
-    showListSong(){
-        if(this.lang=="all")
+    showListSong() {
+        if (this.lang == "all")
             m.song.showListSongByData(m.song.list_song);
-        else{
+        else {
             var l_new = m.song.getListSongByMeta("lang", this.lang);
             m.song.showListSongByData(l_new);
         }
     }
 
+    randomAvatar() {
+        var index_random = Math.floor(Math.random() * m.file_avatar.length);
+        this.file_avatar_song = m.file_avatar[index_random];
+    }
+
     showListSongByData(data) {
         m.act_menu("m-music");
         $(m.song.emp_list_song).html('');
-        var index_random=Math.floor(Math.random() * m.file_avatar.length);
-        var file_avatar_song=m.file_avatar[index_random];
+        this.randomAvatar();
         $.each(data, function (index, song) {
-
-            var songItem = $(`<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
-                                    <img src="images/${file_avatar_song}" alt="Avatar" class="song-avatar">
-                                    <div class="song-title">${song.name}</div>
-                                    <div class="song-artist">${song.artist}</div>
-                                    <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
-                                </div>`);
-            var btn_info = $('<div class="btninfo btn-extension" title="Info"><i class="fas fa-info-circle"></i></div>');
-
-            $(btn_info).click(() => {
-                m.song.showInfoByData(song);
-                return false;
-            });
-            $(songItem).append(btn_info);
-
-            if (song.lyrics != null && song.lyrics != "") {
-                var btnlyrics = $('<div class="btnlyrics btn-extension" title="Lyrics"><i class="fas fa-font"></i></div>');
-                $(btnlyrics).click(() => {
-                    m.song.showlyrics(song);
-                    return false;
-                });
-                $(songItem).append(btnlyrics);
-            }
-
-            if (song.link_ytb != null) {
-                var btn_video = $('<div class="btnvideo btn-extension" title="Watch video"><i class="fab fa-youtube"></i></div>');
-                $(btn_video).click(() => {
-                    m.song.showVideo(song);
-                    return false;
-                });
-                $(songItem).append(btn_video);
-            }
-
-            var btn_download = $('<div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>');
-            $(btn_download).click(() => {
-                cr.show_pay();
-                return false;
-            });
-            $(songItem).append(btn_download);
-            $(m.song.emp_list_song).append(songItem);
+            $(m.song.emp_list_song).append(m.song.songItemEmp(song));
         });
 
         $('.song-item').click(function () {
@@ -109,6 +75,48 @@ class Songs {
 
         m.song.showListCountry();
         $("[title]").tooltip();
+    }
+
+    songItemEmp(song) {
+        var songItem = $(`<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
+            <img src="images/${m.song.file_avatar_song}" alt="Avatar" class="song-avatar">
+            <div class="song-title">${song.name}</div>
+            <div class="song-artist">${song.artist}</div>
+            <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
+        </div>`);
+        var btn_info = $('<div class="btninfo btn-extension" title="Info"><i class="fas fa-info-circle"></i></div>');
+
+        $(btn_info).click(() => {
+            m.song.showInfoByData(song);
+            return false;
+        });
+        $(songItem).append(btn_info);
+
+        if (song.lyrics != null && song.lyrics != "") {
+            var btnlyrics = $('<div class="btnlyrics btn-extension" title="Lyrics"><i class="fas fa-font"></i></div>');
+            $(btnlyrics).click(() => {
+                m.song.showlyrics(song);
+                return false;
+            });
+            $(songItem).append(btnlyrics);
+        }
+
+        if (song.link_ytb != null) {
+            var btn_video = $('<div class="btnvideo btn-extension" title="Watch video"><i class="fab fa-youtube"></i></div>');
+            $(btn_video).click(() => {
+                m.song.showVideo(song);
+                return false;
+            });
+            $(songItem).append(btn_video);
+        }
+
+        var btn_download = $('<div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>');
+        $(btn_download).click(() => {
+            cr.show_pay();
+            return false;
+        });
+        $(songItem).append(btn_download);
+        return songItem;
     }
 
     showVideo(data) {
@@ -203,11 +211,11 @@ class Songs {
                 btn_extension = '<a target="_blank" href="' + v + '" class="btn btn-sm btn-dark"><i class="fas fa-external-link-square-alt"></i></a>';
                 break;
             case "artist":
-                btn_extension = '<a onclick="m.song.showListSongByMeta(\'artist\',\'' + v + '\',\''+m.song.lang+'\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
+                btn_extension = '<a onclick="m.song.showListSongByMeta(\'artist\',\'' + v + '\',\'' + m.song.lang + '\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
                 val = v;
                 break;
             case "genre":
-                btn_extension = '<a onclick="m.song.showListSongByMeta(\'genre\',\'' + v + '\',\''+m.song.lang+'\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
+                btn_extension = '<a onclick="m.song.showListSongByMeta(\'genre\',\'' + v + '\',\'' + m.song.lang + '\')" class="btn btn-sm btn-dark"><i class="fas fa-list"></i></a>';
                 val = v;
                 break;
             default:
@@ -252,26 +260,26 @@ class Songs {
         });
     }
 
-    getListSongByMeta(filed, val,lang=null) {
+    getListSongByMeta(filed, val, lang = null) {
         var list_s = [];
         $(m.song.list_song).each(function (index, s) {
-            if(lang!=null&&lang!="all"){
-                if (s[filed] == val&&lang==s.lang) list_s.push(s);
-            }else{
+            if (lang != null && lang != "all") {
+                if (s[filed] == val && lang == s.lang) list_s.push(s);
+            } else {
                 if (s[filed] == val) list_s.push(s);
-            }  
+            }
         });
         return list_s;
     }
 
-    showListSongByMeta(filed, val,lang=null) {
+    showListSongByMeta(filed, val, lang = null) {
         var html = '<div class="container-fluid"><div class="row"><div class="col-12"><table class="table table-striped table-hover table-responsive fs-9 w-100 "><tbody id="box_list_song"></tbody></table></div></div></div>';
         Swal.fire({
             title: val,
             html: html,
             confirmButtonColor: cr.color_btn,
             didOpen: () => {
-                var list_song = m.song.getListSongByMeta(filed, val,lang);
+                var list_song = m.song.getListSongByMeta(filed, val, lang);
                 $.each(list_song, function (index, s) {
                     var html = '';
                     html = '<tr role="button" class="w-100">';
@@ -294,8 +302,8 @@ class Songs {
                     });
                     $(item_box).find(".col_1").append(btn_add_song);
 
-                    var btn_info=$('<button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-info-circle"></i></button>');
-                    $(btn_info).click(()=>{
+                    var btn_info = $('<button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-info-circle"></i></button>');
+                    $(btn_info).click(() => {
                         m.song.showInfoByData(s);
                         return false;
                     })
