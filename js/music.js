@@ -12,6 +12,7 @@ class Music{
 
     onLoad(){
         cr.setSiteName("Music For Life Store");
+        cr.setSiteUrl("https://kurotsmile.github.io/Music-For-Life-Store/");
         cr.set_color_btn("#ff8c00");
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
