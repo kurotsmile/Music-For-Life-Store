@@ -17,7 +17,6 @@ class Songs {
         var agr_song_name=cr.arg("song");
         if(agr_song_name){
             this.view_song_by_query_url=agr_song_name;
-            //if(history!=null) history.replaceState({}, cr.site_name, '/');
         }
 
         this.lang = m.lang;
@@ -71,6 +70,9 @@ class Songs {
 
         if(this.data_view_temp!=null){
             this.showInfoByData(this.data_view_temp);
+            if(history!=null) history.replaceState({}, cr.site_name, '/');
+            this.data_view_temp=null;
+            this.view_song_by_query_url="";
         }
     }
 
