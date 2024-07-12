@@ -152,7 +152,7 @@ class Songs {
         if(cr.dev){
             var btn_edit=$('<div class="btnEdit btn-extension" title="Edit info"><i class="fas fa-pen-square"></i></div>');
             $(btn_edit).click(()=>{
-                cr_player.add_song(song.mp3, song.name, song.artist);
+                cr_data.edit(song);
                 return false;
             });
             $(songItem).append(btn_edit);

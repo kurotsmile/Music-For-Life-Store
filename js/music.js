@@ -113,8 +113,14 @@ class Music{
 
     show_setting(){
         var html_extension='';
-        html_extension+='<button class="btn btn-dark m-1" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
-        if(this.unlock_all_mp3==false) html_extension+='<button class="btn btn-dark m-1" onclick="m.show_pay_unlock_all_mp3();return false"><i class="fas fa-unlock-alt"></i> Unlock Mp3 music download function</button>';
+        if(cr.dev) html_extension+='<button class="btn btn-dark m-1" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
+        if(this.unlock_all_mp3==false){
+            html_extension+='<div class="form-group">';
+            html_extension+='<label for="unlockallmp3"><i class="fas fa-shopping-cart"></i> Buy functionality</label>';
+            html_extension+='<button class="btn btn-dark m-1" onclick="m.show_pay_unlock_all_mp3();return false"><i class="fas fa-unlock-alt"></i> Unlock Mp3 music download function</button>';
+            html_extension+='<small class="form-text text-muted">Buy once and use unlimited mp3 file downloads forever</small>';
+            html_extension+='</div>';
+        }
         cr.show_setting((setting)=>{
             m.lang=setting.lang;
             m.song.lang=m.lang;
