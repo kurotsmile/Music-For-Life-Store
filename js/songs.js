@@ -112,7 +112,7 @@ class Songs {
 
         var btn_download = $('<div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>');
         $(btn_download).click(() => {
-            cr.show_pay();
+            cr.show_pay(song.name,'Pay to download and use mp3 files for use on your other devices!','2.00',song.mp3,'link');
             return false;
         });
         $(songItem).append(btn_download);
