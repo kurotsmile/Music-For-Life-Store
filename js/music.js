@@ -9,6 +9,8 @@ class Music{
     file_avatar=["avatar_music.png","song_1.png","song_2.png","song_3.png","song_4.png","song_5.png","song_6.png","song_7.png"];
 
     url_data="https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json";
+    //url_data="https://drive.google.com/uc?export=download&id=1UcsqJa0wh3GwMKFyH3RXWID-FQPoKb-U";
+    unlock_all_mp3=false;
 
     onLoad(){
         cr.setSiteName("Music For Life Store");
@@ -18,6 +20,10 @@ class Music{
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
         cr.onLoad();
+        cr.act_done_pay=(data)=>{m.check_pay(data);};
+        if(localStorage.getItem("unlock_all_mp3")!=null){
+            if(localStorage.getItem("unlock_all_mp3")=="1") this.unlock_all_mp3=true;
+        }
     }
 
     show_list_song(){
@@ -108,7 +114,7 @@ class Music{
     show_setting(){
         var html_extension='';
         html_extension+='<button class="btn btn-dark m-1" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
-        html_extension+='<button class="btn btn-dark m-1" onclick="m.show_pay_unlock_all_mp3();return false"><i class="fas fa-unlock-alt"></i> Unlock Mp3 music download function</button>';
+        if(this.unlock_all_mp3==false) html_extension+='<button class="btn btn-dark m-1" onclick="m.show_pay_unlock_all_mp3();return false"><i class="fas fa-unlock-alt"></i> Unlock Mp3 music download function</button>';
         cr.show_setting((setting)=>{
             m.lang=setting.lang;
             m.song.lang=m.lang;
@@ -175,6 +181,12 @@ class Music{
 
     show_pay_unlock_all_mp3(){
         cr.show_pay("Unlock AlL Mp3 download","Unlock Mp3 music download function, you do not need to buy each song once you have paid for this item","6.99","1","unlock_all_mp3");
+    }
+
+    check_pay(data){
+        if(data.type=="unlock_all_mp3"){
+            m.unlock_all_mp3=true;
+        }
     }
 }
 
