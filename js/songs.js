@@ -9,7 +9,17 @@ class Songs {
     box_info_menu_cur = "none";
     file_avatar_song = "";
 
+    view_song_by_query_url="";
+    data_view_temp=null;
+
     show() {
+
+        var agr_song_name=cr.arg("song");
+        if(agr_song_name){
+            this.view_song_by_query_url=agr_song_name;
+            //if(history!=null) history.replaceState({}, cr.site_name, '/');
+        }
+
         this.lang = m.lang;
         var container = $("#container");
         $(container).html('');
@@ -35,6 +45,13 @@ class Songs {
                     var obj_lang = { "name": song.lang, "lang": song.lang };
                     m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
                     m.song.list_song.push(song);
+
+                    if(m.song.view_song_by_query_url!=""){
+
+                        if(song.name.toLowerCase().trim().indexOf(m.song.view_song_by_query_url)!==-1){
+                            m.song.data_view_temp=song;
+                        }
+                    }
                 });
 
                 m.song.showListSong();
@@ -50,6 +67,10 @@ class Songs {
         else {
             var l_new = m.song.getListSongByMeta("lang", this.lang);
             m.song.showListSongByData(l_new);
+        }
+
+        if(this.data_view_temp!=null){
+            this.showInfoByData(this.data_view_temp);
         }
     }
 
@@ -313,7 +334,6 @@ class Songs {
             }
         });
     }
-
 }
 var song = new Songs();
 m.song = song;

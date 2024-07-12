@@ -105,6 +105,8 @@ class Music{
     }
 
     show_setting(){
+        var html_extension='';
+        html_extension+='<button class="btn btn-dark" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
         cr.show_setting((setting)=>{
             m.lang=setting.lang;
             m.song.lang=m.lang;
@@ -116,7 +118,7 @@ class Music{
             if(m.m_menu=="m-year") m.show_list_year();
             if(m.m_menu=="m-genre") m.show_list_genre();
             if(m.m_menu=="m-pp") m.show_pp();
-        });
+        },html_extension);
     }
 
     show_pp(){
@@ -138,6 +140,35 @@ class Music{
             m.key_search=val;
             cr.loadJs("js/search.js","search","show");
         });
+    }
+
+    getCurrentDateFormatted() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+    
+    download_site_map(){
+        var xml='<?xml version="1.0" encoding="UTF-8"?>';
+        xml+='<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+            $(m.song.list_song).each(function(index,s){
+                xml+='<url>';
+                xml+='<loc>'+cr.site_url+'?song='+s.name.trim()+'</loc>';
+                xml+='<lastmod>'+m.getCurrentDateFormatted()+'</lastmod>';
+                xml+='<changefreq>monthly</changefreq>';
+                xml+='<priority>0.8</priority>';
+                xml+='</url>';
+            })
+        xml+='</urlset>';
+        var blob = new Blob([xml], { type: "application/xml" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = "sitemap.xml";
+        a.click();
+        URL.revokeObjectURL(url);
     }
 }
 
