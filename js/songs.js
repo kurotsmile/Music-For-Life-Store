@@ -138,6 +138,13 @@ class Songs {
             return false;
         });
         $(songItem).append(btn_download);
+
+        var btn_add_playlist=$('<div class="btnAddPlaylist btn-extension" title="Add this song to a playlist"><i class="fas fa-plus-circle"></i></div>');
+        $(btn_add_playlist).click(()=>{
+            cr_player.add_song(song.mp3, song.name, song.artist);
+            return false;
+        });
+        $(songItem).append(btn_add_playlist);
         return songItem;
     }
 
