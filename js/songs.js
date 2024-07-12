@@ -174,7 +174,7 @@ class Songs {
 
     showInfoByData(data) {
         m.song.box_info_menu_cur = "info";
-        var t_table_info = '<table class="table table-striped table-hover table-responsive fs-9 w-100 text-break" style="text-align:left;width:100%">';
+        var t_table_info = '<table class="table table-striped table-hover table-responsive fs-9 w-100 text-break" style="text-align:left;width:100%;display: table;">';
         t_table_info += '<tbody>';
         $.each(data, function (k, v) {
             if (v != "" && v != null) {
@@ -200,27 +200,55 @@ class Songs {
     }
 
     menuSubInfoBox(data) {
+        var btn_play= $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn"  title="Play this song"><i class="fas fa-play"></i></button>');
+        $(btn_play).click(()=>{
+            cr_player.play(data.mp3, data.name, data.artist);
+            $(this).tooltip('hide');
+            Swal.close();
+        });
+        $("#all_btn_dock").append(btn_play);
+
+        var btn_add_playlist= $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn"  title="Add this song to a playlist"><i class="fas fa-plus-circle"></i></button>');
+        $(btn_add_playlist).click(()=>{
+            cr_player.add_song(data.mp3, data.name, data.artist);
+            $(this).tooltip('hide');
+            Swal.close();
+        });
+        $("#all_btn_dock").append(btn_add_playlist);
+
         if (data.lyrics != null) {
-            var btn_lyrics = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "lyrics" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn"><i class="fas fa-font"></i></button>');
-            $(btn_lyrics).click(function () { m.song.showlyrics(data); });
+            var btn_lyrics = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "lyrics" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn" title="Lyrics"><i class="fas fa-font"></i></button>');
+            $(btn_lyrics).click(function () { 
+                m.song.showlyrics(data);
+                $(this).tooltip('hide');
+            });
             $("#all_btn_dock").append(btn_lyrics);
         }
 
         if (data.link_ytb != null) {
-            var btn_ytb = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "video" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn"><i class="fab fa-youtube"></i></button>');
-            $(btn_ytb).click(function () { m.song.showVideo(data); });
+            var btn_ytb = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "video" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn" title="Watch Video"><i class="fab fa-youtube"></i></button>');
+            $(btn_ytb).click(function () { 
+                m.song.showVideo(data);
+                $(this).tooltip('hide');
+             });
             $("#all_btn_dock").append(btn_ytb);
         }
 
-        var btn_info = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "info" ? "active" : "info") + ' m-1 animate__animated animate__bounceIn"><i class="fas fa-info-circle"></i></button>');
-        $(btn_info).click(function () { m.song.showInfoByData(data); });
+        var btn_info = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "info" ? "active" : "info") + ' m-1 animate__animated animate__bounceIn" title="Info Song"><i class="fas fa-info-circle"></i></button>');
+        $(btn_info).click(function () { 
+            m.song.showInfoByData(data);
+            $(this).tooltip('hide'); 
+        });
         $("#all_btn_dock").append(btn_info);
-
-        var btn_download = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn"><i class="fas fa-arrow-alt-circle-down"></i></button>');
+        
+        var btn_download = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="Buy Mp3 File"><i class="fas fa-arrow-alt-circle-down"></i></button>');
         $(btn_download).click(function () {
+            $(this).tooltip('hide');
             cr.show_pay(data.name);
         });
+        
         $("#all_btn_dock").append(btn_download);
+        $('.btn-msg').tooltip();
     }
 
     getValByKeyTable(k, v) {
