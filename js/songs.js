@@ -45,9 +45,8 @@ class Songs {
                     m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
                     m.song.list_song.push(song);
 
-                    if(m.song.view_song_by_query_url!=""){
-
-                        if(song.name.toLowerCase().trim().indexOf(m.song.view_song_by_query_url)!==-1){
+                    if(m.song.view_song_by_query_url!=""&&m.song.data_view_temp==null){
+                        if(song.name.toLowerCase().trim().indexOf(m.song.view_song_by_query_url.toLowerCase().trim())!==-1){
                             m.song.data_view_temp=song;
                         }
                     }

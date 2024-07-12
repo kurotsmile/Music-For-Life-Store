@@ -181,7 +181,6 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
          var windowHeight = $(window).height();
-         var scrollHeight = $(document).height();
          var scrollTop = $(window).scrollTop();
  
          if (scrollTop > windowHeight / 2) {
@@ -189,9 +188,6 @@ $(document).ready(function() {
          } else {
              scrollTopBtn.fadeOut();
          }
- 
-         var scrollRight = ($(window).width() - $('.container').offset().left - $('.container').width()) / 2 - 50;
-         scrollTopBtn.css('right', scrollRight);
     });
  
     scrollTopBtn.click(function() {
