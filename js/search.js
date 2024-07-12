@@ -10,7 +10,11 @@ class Search{
 
         $.each(m.song.list_song,function(index,song){
             if(song.name.toLowerCase().indexOf(m.key_search.toLowerCase())!==-1){
-                $(emp_list_song).append(m.song.songItemEmp(song));
+                var empSong=m.song.songItemEmp(song);
+                $(empSong).click(()=>{
+                    cr_player.play(song.mp3,song.name,song.artist);
+                });
+                $(emp_list_song).append(empSong);
             }
         });
     }
