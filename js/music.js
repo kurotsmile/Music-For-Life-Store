@@ -14,6 +14,7 @@ class Music{
         cr.setSiteName("Music For Life Store");
         cr.setSiteUrl("https://music-for-life-drab.vercel.app");
         cr.set_color_btn("#ff8c00");
+        cr.setVer("0.3");
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
         cr.onLoad();
