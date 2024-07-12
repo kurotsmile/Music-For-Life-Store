@@ -107,7 +107,8 @@ class Music{
 
     show_setting(){
         var html_extension='';
-        html_extension+='<button class="btn btn-dark" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
+        html_extension+='<button class="btn btn-dark m-1" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
+        html_extension+='<button class="btn btn-dark m-1" onclick="m.show_pay_unlock_all_mp3();return false"><i class="fas fa-unlock-alt"></i> Unlock Mp3 music download function</button>';
         cr.show_setting((setting)=>{
             m.lang=setting.lang;
             m.song.lang=m.lang;
@@ -170,6 +171,10 @@ class Music{
         a.download = "sitemap.xml";
         a.click();
         URL.revokeObjectURL(url);
+    }
+
+    show_pay_unlock_all_mp3(){
+        cr.show_pay("Unlock AlL Mp3 download","Unlock Mp3 music download function, you do not need to buy each song once you have paid for this item","6.99","1","unlock_all_mp3");
     }
 }
 

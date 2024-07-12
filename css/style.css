@@ -185,6 +185,12 @@ h1 {
     right:20px;
 }
 
+.song-item .btn-extension.btnEdit{
+    top: 88px;
+    left:20px;
+    border-radius: 6px;
+}
+
 .song-item .btn-extension i{
     color: #dc3545;
 }
