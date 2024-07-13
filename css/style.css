@@ -63,7 +63,7 @@ h1 {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-.song-avatar {
+.song-avatar{
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -172,12 +172,13 @@ h1 {
     left: 15px;
 }
 .song-item .btn-extension.btnplay{
-    top: 65px;
-    left: 60px;
+    top: 40%;
+    left: 50%;
     width: 80px;
     height: 80px;
     background-color: #ffffffb5 !important;
     font-size: 55px;
+    transform: translate(-50%,-50%);
 }
 
 .song-item .btn-extension.btnAddPlaylist{

@@ -104,9 +104,9 @@ class Songs {
     songItemEmp(song) {
         var songItem = $(`<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
             <img src="images/${m.song.file_avatar_song}" alt="Avatar" class="song-avatar">
+            <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
             <div class="song-title">${song.name}</div>
             <div class="song-artist">${song.artist}</div>
-            <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
         </div>`);
         var btn_info = $('<div class="btninfo btn-extension" title="Info"><i class="fas fa-info-circle"></i></div>');
 
