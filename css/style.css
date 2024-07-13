@@ -216,21 +216,21 @@ h1 {
     color: white;
 }
 
-#container-about,#container .service{
+#container-about,#all_item .service{
     color: #000;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
 }
 
-#container .service{
+#all_item .service{
     padding: 20px;
 }
 
-#container-about a,footer a,#container .service a{
+#container-about a,footer a,#all_item .service a{
     color:#810d18;
 }
 
-#container-about a:hover,#container .service a:hover{
+#container-about a:hover,#all_item .service a:hover{
     color:rgb(202, 116, 3)
 }
 

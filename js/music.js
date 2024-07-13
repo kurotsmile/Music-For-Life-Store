@@ -26,6 +26,10 @@ class Music{
         }
     }
 
+    loading(){
+        $("#sub_title").html('<div class="col-12 mb-2"><i class="fas fa-spinner fa-spin"></i> Loading...</div>');
+    }
+
     show_list_song(){
         m.song.show();
     }
@@ -65,6 +69,7 @@ class Music{
     }
 
     show_about(){
+        this.loading();
         this.act_menu("m-about");
         var lang_show="";
         if(this.lang=="all")
@@ -73,7 +78,8 @@ class Music{
             lang_show=this.lang;
 
         cr.get("about/"+lang_show+".html",(data)=>{
-            $("#container").html(data);
+            m.sub_title();
+            $("#all_item").html(data);
         });
     }
 
@@ -160,20 +166,25 @@ class Music{
     }
 
     show_pp(){
-        cr.show_pp("#container",()=>{
+        this.loading();
+        cr.show_pp("#all_item",()=>{
+            m.sub_title();
             m.act_menu("m-pp");
             cr.top();
         });
     }
 
     show_tos(){
-        cr.show_tos("#container",()=>{
+        this.loading();
+        cr.show_tos("#all_item",()=>{
+            m.sub_title();
             m.act_menu("m-tos");
             cr.top();
         });
     }
 
     show_search(){
+        this.loading();
         cr.showSearch((val)=>{
             m.key_search=val;
             cr.loadJs("js/search.js","search","show");
@@ -217,6 +228,32 @@ class Music{
         if(data.type=="unlock_all_mp3"){
             m.unlock_all_mp3=true;
         }
+    }
+
+    box_item(file_avatar,name,tip){
+        var boxItemEmp = $(`
+            <div class="col-6 col-sm-4 col-md-2 col-lg-2 col-xl-2 mb-1 p-1">
+                <div role="button" class="song-item">
+                    <img src="images/${file_avatar}" alt="Avatar" class="song-avatar">
+                    <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
+                    <div class="song-title">${name}</div>
+                    <div class="song-artist">${tip}</div>
+                </div>
+            </div>
+        `);
+        return boxItemEmp;
+    }
+
+    add_item(obj_item){
+        $('#all_item').append(obj_item);
+    }
+
+    clear(){
+        $('#all_item').html('');
+    }
+
+    sub_title(val=''){
+        $("#sub_title").html(val);
     }
 }
 

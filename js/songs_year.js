@@ -1,42 +1,28 @@
 class Songs_year{
 
-    emp_list_year="";
-    emp_list_country="";
-
     lang="en";
 
     show(){
-        var container=$("#container");
-        $(container).html('');
-        this.emp_list_country=$('<div class="col-12 text-center mb-2" id="list_country"></div>');
-        this.emp_list_year=$('<div class="song-list col-12 pl-3 pr-3" id="song-list"></div>');
-        $(container).append(this.emp_list_country);
-        $(container).append(this.emp_list_year);
+        m.loading();
         var l_new=m.song_year.getListByLang(this.lang);
         this.loadListByData(l_new);      
     }
 
     loadListByData(data){
         m.act_menu("m-year");
-        $(m.song_year.emp_list_year).html('');
-
+        m.clear();
         $.each(data,function(index,y){
-            var yearItem = $(`<div role="button" class="song-item">
-            <img src="images/timer_music.png" alt="Avatar Year" class="song-avatar">
-            <div class="song-title">${y.name}</div>
-            <div class="song-artist"><i class="fas fa-music"></i> ${y.amount} song (<i class="fas fa-globe-asia"></i> ${y.lang})</div>
-            </div>`);
+            var yearItem=m.box_item('timer_music.png',y.name,'<i class="fas fa-music"></i> '+y.amount+' song (<i class="fas fa-globe-asia"></i> '+y.lang+')');
             $(yearItem).click(()=>{
                 m.song.showListSongByMeta('year',y.name,m.song_year.lang);
             });
-            $(m.song_year.emp_list_year).append(yearItem);
+            m.add_item(yearItem);
         });
         this.showListCountry();
     }
 
     showListCountry(){
-        $(this.emp_list_country).html('');
-
+        $('#sub_title').html('');
         $.each(m.song.list_lang,function(index,l){
             var btn_l=$(`<button class="btn btn-sm ${(m.song_year.lang === l.name ? "active" : l.name)} m-1 btn-c btn_l">${l.name}</button>`);
             $(btn_l).click(()=>{
@@ -44,7 +30,7 @@ class Songs_year{
                 var l_new=m.song_year.getListByLang(l.name);
                 m.song_year.loadListByData(l_new);
             });
-            $(m.song_year.emp_list_country).append(btn_l);
+            $('#sub_title').append(btn_l);
         });
     }
 

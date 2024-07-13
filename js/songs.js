@@ -2,9 +2,7 @@ class Songs {
 
     list_song = [];
     list_lang = [];
-    list_country = null;
-
-    emp_list_song = null;
+    
     lang = "en";
     box_info_menu_cur = "none";
     file_avatar_song = "";
@@ -13,20 +11,14 @@ class Songs {
     data_view_temp=null;
 
     show() {
-
         var agr_song_name=cr.arg("song");
         if(agr_song_name){
             this.view_song_by_query_url=agr_song_name;
         }
 
-        this.lang = m.lang;
-        var container = $("#container");
-        $(container).html('');
-        this.list_country = $('<div class="col-12 text-center mb-2" id="list_country"><div><i class="fas fa-spinner fa-spin"></i> Loading...</div></div>');
-        this.emp_list_song = $('<div class="song-list col-12 pl-3 pr-3" id="song-list"></div>');
-        $(container).append(this.list_country);
-        $(container).append(this.emp_list_song);
+        m.loading();
 
+        this.lang = m.lang;
         if (this.list_song.length == 0) {
             $.getJSON(m.url_data, function (data) {
 
@@ -84,30 +76,22 @@ class Songs {
 
     showListSongByData(data) {
         m.act_menu("m-music");
-        $(m.song.emp_list_song).html('');
+        $("#all_item").html('');
         this.randomAvatar();
         $.each(data, function (index, song) {
-            $(m.song.emp_list_song).append(m.song.songItemEmp(song));
+            var empSong=m.song.songItemEmp(song);
+            $(empSong).click(()=>{
+                cr_player.play(song.mp3, song.name,song.artist);
+            })
+            $("#all_item").append(empSong);
         });
-
-        $('.song-item').click(function () {
-            var songSrc = $(this).data('src');
-            var songTitle = $(this).data('title');
-            var songArtist = $(this).data('artist');
-            cr_player.play(songSrc, songTitle, songArtist);
-        });
-
         m.song.showListCountry();
         $("[title]").tooltip();
     }
 
     songItemEmp(song) {
-        var songItem = $(`<div role="button" class="song-item" data-src="${song.mp3}" data-title="${song.name}" data-artist="${song.artist}">
-            <img src="images/${m.song.file_avatar_song}" alt="Avatar" class="song-avatar">
-            <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
-            <div class="song-title">${song.name}</div>
-            <div class="song-artist">${song.artist}</div>
-        </div>`);
+        var songItemEmp = m.box_item(this.file_avatar_song,song.name,song.artist);
+        var songItem=$(songItemEmp).find(".song-item");
         var btn_info = $('<div class="btninfo btn-extension" title="Info"><i class="fas fa-info-circle"></i></div>');
 
         $(btn_info).click(() => {
@@ -170,7 +154,7 @@ class Songs {
             $(songItem).append(btn_edit);
         }
 
-        return songItem;
+        return songItemEmp;
     }
 
     showVideo(data) {
@@ -322,10 +306,10 @@ class Songs {
     }
 
     showListCountry() {
-        $(m.song.list_country).html('');
+        $("#sub_title").html('');
 
         var btn_all_l = $(`<button class="btn btn-sm ${(m.song.lang === "all" ? "active" : "all")} m-1 btn-c btn_l"><i class="fas fa-globe"></i></button>`);
-        $(m.song.list_country).append(btn_all_l);
+        $("#sub_title").append(btn_all_l);
         $(btn_all_l).click(() => {
             m.song.lang = "all";
             m.song.showListSongByData(m.song.list_song);
@@ -338,7 +322,7 @@ class Songs {
                 var l_new = m.song.getListSongByMeta("lang", l.name);
                 m.song.showListSongByData(l_new);
             });
-            $(m.song.list_country).append(btn_l);
+            $("#sub_title").append(btn_l);
         });
     }
 
