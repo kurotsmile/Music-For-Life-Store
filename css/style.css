@@ -163,13 +163,13 @@ h1 {
 }
 
 .song-item .btn-extension.btnlyrics{
-    top: 150px;
     right: 15px;
+    bottom: 33%;
 }
 
 .song-item .btn-extension.btndownload{
-    top: 150px;
     left: 15px;
+    bottom: 33%;
 }
 .song-item .btn-extension.btnplay{
     top: 40%;
@@ -182,14 +182,16 @@ h1 {
 }
 
 .song-item .btn-extension.btnAddPlaylist{
-    top: 88px;
-    right:20px;
+    top: 40%;
+    right:15px;
+    transform: translateY(-50%);
 }
 
 .song-item .btn-extension.btnEdit{
-    top: 88px;
-    left:20px;
+    top: 40%;
+    left:15px;
     border-radius: 6px;
+    transform: translateY(-50%);
 }
 
 .song-item .btn-extension i{
