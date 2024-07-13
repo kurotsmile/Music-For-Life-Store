@@ -46,12 +46,6 @@ class Songs_Genre{
             });
             $(m.song_genre.emp_list_country).append(btn_l);
         });
-
-        var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
-        $(m.song_genre.emp_list_country).append(btn_download);
-        $(btn_download).click(()=>{
-            m.donwload_genre();
-        });
     }
 
     getListByLang(lang){

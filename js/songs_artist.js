@@ -59,12 +59,6 @@ class Songs_Artist{
             });
             $(m.song_artist.emp_list_country).append(btn_l);
         });
-
-        var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
-        $(this.emp_list_country).append(btn_download);
-        $(btn_download).click(()=>{
-            m.donwload_artist();
-        });
     }
 
     getListByLang(lang){

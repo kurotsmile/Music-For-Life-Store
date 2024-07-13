@@ -43,6 +43,8 @@ class Songs {
 
                     var obj_lang = { "name": song.lang, "lang": song.lang };
                     m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
+
+                    song['index']=index;
                     m.song.list_song.push(song);
 
                     if(m.song.view_song_by_query_url!=""&&m.song.data_view_temp==null){
@@ -152,7 +154,17 @@ class Songs {
         if(cr.dev){
             var btn_edit=$('<div class="btnEdit btn-extension" title="Edit info"><i class="fas fa-pen-square"></i></div>');
             $(btn_edit).click(()=>{
-                cr_data.edit(song);
+                var index_update=song["index"];
+                delete(song["index"]);
+                cr_data.edit(song,(db)=>{
+                    song[index_update]=db;
+                    Swal.fire({
+                        icon:"success",
+                        title:"Edit Song",
+                        text:"Update Success!",
+                        confirmButtonColor:cr.color_btn
+                    });
+                });
                 return false;
             });
             $(songItem).append(btn_edit);

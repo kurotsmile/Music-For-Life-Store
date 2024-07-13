@@ -77,25 +77,37 @@ class Music{
         });
     }
 
-    donwload_artist(){
+    download_artist(){
         var data_download={};
         data_download["all_item"]=m.list_artist;
         data_download["collection"]='song_artist';
         m.download_json(data_download,"song_artist.json");
     }
     
-    donwload_year(){
+    download_year(){
         var data_download={};
         data_download["all_item"]=m.list_year;
         data_download["collection"]='song_year';
         m.download_json(data_download,"song_year.json");
     }
 
-    donwload_genre(){
+    download_genre(){
         var data_download={};
         data_download["all_item"]=m.list_genre;
         data_download["collection"]='song_genre';
         m.download_json(data_download,"song_genre.json");
+    }
+
+    download_song(){
+        var data_download={};
+        var list_new=[];
+        $(m.song.list_song).each(function(index,s){
+            delete(s["index"]);
+            list_new.push(s);
+        });
+        data_download["all_item"]=list_new;
+        data_download["collection"]='song';
+        m.download_json(data_download,"song.json");
     }
     
     download_json(data,file_name){
@@ -113,7 +125,19 @@ class Music{
 
     show_setting(){
         var html_extension='';
-        if(cr.dev) html_extension+='<button class="btn btn-dark m-1" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
+        if(cr.dev){
+            html_extension+='<div class="form-group">';
+            html_extension+='<label for="unlockallmp3"><i class="fas fa-database"></i> Database Json</label>';
+            html_extension+='<div class="d-block">';
+            html_extension+='<button class="btn btn-dark m-1 btn-sm" onclick="m.download_song();return false"><i class="fas fa-download"></i> Download Song</button>';
+            html_extension+='<button class="btn btn-dark m-1 btn-sm" onclick="m.download_artist();return false"><i class="fas fa-download"></i> Download Artist</button>';
+            html_extension+='<button class="btn btn-dark m-1 btn-sm" onclick="m.download_genre();return false"><i class="fas fa-download"></i> Download Genre</button>';
+            html_extension+='<button class="btn btn-dark m-1 btn-sm" onclick="m.download_year();return false"><i class="fas fa-download"></i> Download Year</button>';
+            html_extension+='<button class="btn btn-dark m-1 btn-sm" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
+            html_extension+='</div>';
+            html_extension+='</div>';
+        }
+
         if(this.unlock_all_mp3==false){
             html_extension+='<div class="form-group">';
             html_extension+='<label for="unlockallmp3"><i class="fas fa-shopping-cart"></i> Buy functionality</label>';
