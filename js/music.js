@@ -10,6 +10,7 @@ class Music{
 
     url_data="https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json";
     //url_data="https://drive.google.com/uc?export=download&id=1UcsqJa0wh3GwMKFyH3RXWID-FQPoKb-U";
+
     unlock_all_mp3=false;
 
     onLoad(){
