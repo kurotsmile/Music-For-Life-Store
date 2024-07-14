@@ -70,8 +70,7 @@ class Songs {
     }
 
     randomAvatar() {
-        var index_random = Math.floor(Math.random() * m.file_avatar.length);
-        this.file_avatar_song = m.file_avatar[index_random];
+        this.file_avatar_song = cr.get_random(m.file_avatar);
     }
 
     showListSongByData(data) {
@@ -328,8 +327,16 @@ class Songs {
         var btn_add = $(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-plus-circle"></i></button>`);
         $("#sub_title").append(btn_add);
         $(btn_add).click(() => {
-            var obj_new={'name':'',"artist":'','mp3':''};
-            cr_data.add(obj_new);
+            var obj_new=cr_data.clear_value(m.song.list_song[0]);
+            delete(obj_new["index"]);
+            cr_data.add(obj_new,(data)=>{
+                Swal.fire({
+                    icon:"success",
+                    title:"Add song",
+                    text:"Add song success"
+                });
+                m.song.list_song.push(data);
+            });
         });
     }
 

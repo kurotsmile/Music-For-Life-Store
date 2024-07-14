@@ -8,11 +8,17 @@ class Music{
 
     file_avatar=["avatar_music.png","song_1.png","song_2.png","song_3.png","song_4.png","song_5.png","song_6.png","song_7.png"];
 
-    url_data="https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json";
+    list_url_data=[
+        "https://raw.githubusercontent.com/kurotsmile/Database-Store-Json/main/song.json",
+        "https://www.googleapis.com/drive/v3/files/1UcsqJa0wh3GwMKFyH3RXWID-FQPoKb-U?alt=media&key=AIzaSyDKcjH_bDJz3EcqPdV5i62IZNVQ6EkyOFg"
+    ];
+
+    url_data="";
 
     unlock_all_mp3=false;
 
     onLoad(){
+        m.url_data=cr.get_random(m.list_url_data);
         cr.setSiteName("Music For Life Store");
         cr.setSiteUrl("https://music-for-life-drab.vercel.app");
         cr.set_color_btn("#ff8c00");
