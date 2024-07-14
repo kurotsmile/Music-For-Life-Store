@@ -324,6 +324,13 @@ class Songs {
             });
             $("#sub_title").append(btn_l);
         });
+
+        var btn_add = $(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-plus-circle"></i></button>`);
+        $("#sub_title").append(btn_add);
+        $(btn_add).click(() => {
+            var obj_new={'name':'',"artist":'','mp3':''};
+            cr_data.add(obj_new);
+        });
     }
 
     getListSongByMeta(filed, val, lang = null) {
