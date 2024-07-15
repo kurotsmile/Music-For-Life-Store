@@ -168,6 +168,7 @@ class Music{
             if(m.m_menu=="m-year") m.show_list_year();
             if(m.m_menu=="m-genre") m.show_list_genre();
             if(m.m_menu=="m-pp") m.show_pp();
+            if(m.m_menu=="m-tos") m.show_tos();
         },html_extension);
     }
 
