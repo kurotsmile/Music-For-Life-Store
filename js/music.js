@@ -147,6 +147,7 @@ class Music{
             html_extension+='<button class="btn btn-dark m-1 btn-sm" onclick="m.download_year();return false"><i class="fas fa-download"></i> Download Year</button>';
             html_extension+='<button class="btn btn-dark m-1 btn-sm" onclick="m.download_site_map();return false"><i class="fas fa-download"></i> Download Site Map</button>';
             html_extension+='</div>';
+            html_extension+='<small class="form-text text-muted">'+m.url_data+'</small>';
             html_extension+='</div>';
         }
 
@@ -157,6 +158,7 @@ class Music{
             html_extension+='<small class="form-text text-muted">Buy once and use unlimited mp3 file downloads forever</small>';
             html_extension+='</div>';
         }
+        
         cr.show_setting((setting)=>{
             m.lang=setting.lang;
             m.song.lang=m.lang;

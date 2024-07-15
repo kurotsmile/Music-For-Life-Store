@@ -255,14 +255,22 @@ class Songs {
             $(this).tooltip('hide'); 
         });
         $("#all_btn_dock").append(btn_info);
+
+        var btn_share = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="Share"><i class="fas fa-share-alt"></i></button>');
+        $(btn_share).click(function () {
+            var link_share=cr.site_url+"?song="+data.name;
+            $(this).tooltip('hide');
+            cr.show_share(link_share,data.name);
+        });
+        $("#all_btn_dock").append(btn_share);
         
         var btn_download = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="Buy Mp3 File"><i class="fas fa-arrow-alt-circle-down"></i></button>');
         $(btn_download).click(function () {
             $(this).tooltip('hide');
             cr.show_pay(data.name);
         });
-        
         $("#all_btn_dock").append(btn_download);
+
         $('.btn-msg').tooltip();
     }
 
