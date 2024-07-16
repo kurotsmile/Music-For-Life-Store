@@ -171,6 +171,7 @@ class Music{
             if(m.m_menu=="m-genre") m.show_list_genre();
             if(m.m_menu=="m-pp") m.show_pp();
             if(m.m_menu=="m-tos") m.show_tos();
+            if(m.m_menu=="m-about") m.show_about();
         },html_extension);
     }
 
