@@ -335,16 +335,28 @@ class Songs {
         var btn_add = $(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-plus-circle"></i></button>`);
         $("#sub_title").append(btn_add);
         $(btn_add).click(() => {
-            var obj_new=cr_data.clear_value(m.song.list_song[0]);
-            delete(obj_new["index"]);
-            cr_data.add(obj_new,(data)=>{
-                Swal.fire({
-                    icon:"success",
-                    title:"Add song",
-                    text:"Add song success"
+            if(cr.dev){
+                var obj_new=cr_data.clear_value(m.song.list_song[0]);
+                delete(obj_new["index"]);
+                cr_data.add(obj_new,(data)=>{
+                    Swal.fire({
+                        icon:"success",
+                        title:"Add song",
+                        text:"Add song success"
+                    });
+                    m.song.list_song.push(data);
                 });
-                m.song.list_song.push(data);
-            });
+            }else{
+                Swal.fire({
+                    title: 'Add Song',
+                    html: `
+                      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc1tKxxJ8bQrCWst_xkL4Vnsss71gz9loLbewY4-Yqzs-4WoQ/viewform?embedded=true" width="100%" height="480" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    `,
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    showConfirmButton:false
+                });
+            }
         });
     }
 
