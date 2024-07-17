@@ -26,6 +26,7 @@ class Music{
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
         cr.onLoad();
+        cr.add_btn_top();
         cr.act_done_pay=(data)=>{m.check_pay(data);};
         if(localStorage.getItem("unlock_all_mp3")!=null){
             if(localStorage.getItem("unlock_all_mp3")=="1") this.unlock_all_mp3=true;
@@ -271,22 +272,4 @@ var m;
 $(document).ready(function() {
     m=new Music();
     m.onLoad();
-
-    var scrollTopBtn = $("#scrollTopBtn");
-
-    $(window).scroll(function() {
-         var windowHeight = $(window).height();
-         var scrollTop = $(window).scrollTop();
- 
-         if (scrollTop > windowHeight / 2) {
-             scrollTopBtn.fadeIn();
-         } else {
-             scrollTopBtn.fadeOut();
-         }
-    });
- 
-    scrollTopBtn.click(function() {
-         $("html, body").animate({ scrollTop: 0 }, "slow");
-         return false;
-    });
 });
