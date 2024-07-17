@@ -194,8 +194,8 @@ class Music{
     }
 
     show_search(){
-        this.loading();
         cr.showSearch((val)=>{
+            m.loading();
             m.key_search=val;
             cr.loadJs("js/search.js","search","show");
         });
