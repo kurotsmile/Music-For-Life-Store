@@ -168,6 +168,7 @@ class Songs {
                 m.song.menuSubInfoBox(data);
             }
         });
+        cr_player.pause();
     }
 
     showlyrics(data) {
