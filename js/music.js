@@ -215,7 +215,7 @@ class Music{
         xml+='<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
             $(m.song.list_song).each(function(index,s){
                 xml+='<url>';
-                xml+='<loc>'+cr.site_url+'?song='+s.name.trim()+'</loc>';
+                xml+='<loc>'+cr.site_url+'/?song='+s.name.trim()+'</loc>';
                 xml+='<lastmod>'+m.getCurrentDateFormatted()+'</lastmod>';
                 xml+='<changefreq>monthly</changefreq>';
                 xml+='<priority>0.8</priority>';
