@@ -299,7 +299,7 @@ class Songs {
 
         if (val != '') {
             html = '<tr>';
-            html += '<td><i class="fas fa-info"></i> ' + k + '</td>';
+            html += '<td>'+cr_data.getIconBykey(k)+' ' + k + '</td>';
             html += '<td>' + val + '</td>';
             html += '<td>' + btn_extension + '</td>';
             html += '</tr>';

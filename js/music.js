@@ -94,21 +94,21 @@ class Music{
         var data_download={};
         data_download["all_item"]=m.list_artist;
         data_download["collection"]='song_artist';
-        m.download_json(data_download,"song_artist.json");
+        cr.download(data_download,"song_artist.json");
     }
     
     download_year(){
         var data_download={};
         data_download["all_item"]=m.list_year;
         data_download["collection"]='song_year';
-        m.download_json(data_download,"song_year.json");
+        cr.download(data_download,"song_year.json");
     }
 
     download_genre(){
         var data_download={};
         data_download["all_item"]=m.list_genre;
         data_download["collection"]='song_genre';
-        m.download_json(data_download,"song_genre.json");
+        cr.download(data_download,"song_genre.json");
     }
 
     download_song(){
@@ -120,22 +120,9 @@ class Music{
         });
         data_download["all_item"]=list_new;
         data_download["collection"]='song';
-        m.download_json(data_download,"song.json");
+        cr.download(data_download,"song.json");
     }
     
-    download_json(data,file_name){
-        var jsonString = JSON.stringify(data);
-        var blob = new Blob([jsonString], { type: "application/json" });
-    
-        var url = URL.createObjectURL(blob);
-        
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = file_name;
-        a.click();
-        URL.revokeObjectURL(url);
-    }
-
     show_setting(){
         var html_extension='';
         if(cr.dev){
@@ -222,13 +209,7 @@ class Music{
                 xml+='</url>';
             })
         xml+='</urlset>';
-        var blob = new Blob([xml], { type: "application/xml" });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = "sitemap.xml";
-        a.click();
-        URL.revokeObjectURL(url);
+        cr.download(xml,'sitemap.xml','application/xml');
     }
 
     show_pay_unlock_all_mp3(){
