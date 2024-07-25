@@ -45,6 +45,12 @@ class Songs_Artist{
             });
             $('#sub_title').append(btn_l);
         });
+
+        var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
+        $(btn_download).click(()=>{
+           cr.download(m.list_artist,"song_artist.json");
+        });
+        $('#sub_title').append(btn_download);
     }
 
     getListByLang(lang){
@@ -54,7 +60,6 @@ class Songs_Artist{
         });
         return list_art_query;
     }
-
 }
 var song_artist=new Songs_Artist();
 m.song_artist=song_artist;

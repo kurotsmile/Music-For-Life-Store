@@ -2,6 +2,7 @@ class Music{
     list_artist=[];
     list_year=[];
     list_genre=[];
+    list_album=[];
     lang="en";
 
     m_menu="";
@@ -52,6 +53,11 @@ class Music{
     show_list_genre(){
         cr.loadJs("js/songs_genre.js","song_genre","show");
     }
+
+    show_list_album(){
+        cr.loadJs("js/songs_album.js","song_album","show");
+    }
+
 
     act_menu(id){
         $(".btn-m").removeClass("text-white");
@@ -189,27 +195,12 @@ class Music{
         });
     }
 
-    getCurrentDateFormatted() {
-        const date = new Date();
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-    }
-    
     download_site_map(){
-        var xml='<?xml version="1.0" encoding="UTF-8"?>';
-        xml+='<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-            $(m.song.list_song).each(function(index,s){
-                xml+='<url>';
-                xml+='<loc>'+cr.site_url+'/?song='+s.name.trim()+'</loc>';
-                xml+='<lastmod>'+m.getCurrentDateFormatted()+'</lastmod>';
-                xml+='<changefreq>monthly</changefreq>';
-                xml+='<priority>0.8</priority>';
-                xml+='</url>';
-            })
-        xml+='</urlset>';
-        cr.download(xml,'sitemap.xml','application/xml');
+        var list_link=[];
+        $(m.song.list_song).each(function(index,s){
+            list_link.push(cr.site_url+'/?song='+s.name.trim());
+        });
+        cr.download_sitemap(list_link);
     }
 
     show_pay_unlock_all_mp3(){

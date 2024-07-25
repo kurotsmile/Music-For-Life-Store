@@ -33,6 +33,12 @@ class Songs_Genre{
             });
             $('#sub_title').append(btn_l);
         });
+
+        var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
+        $(btn_download).click(()=>{
+           cr.download(m.list_genre,"song_genre.json");
+        });
+        $('#sub_title').append(btn_download);
     }
 
     getListByLang(lang){

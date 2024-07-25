@@ -36,6 +36,9 @@ class Songs {
                     var obj_lang = { "name": song.lang, "lang": song.lang };
                     m.addOrUpdateObjectToList(m.song.list_lang, obj_lang);
 
+                    var obj_album = { "name": song.album, "lang": song.lang };
+                    m.addOrUpdateObjectToList(m.list_album, obj_album);
+
                     song['index']=index;
                     m.song.list_song.push(song);
 

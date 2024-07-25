@@ -32,6 +32,12 @@ class Songs_year{
             });
             $('#sub_title').append(btn_l);
         });
+
+        var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
+        $(btn_download).click(()=>{
+           cr.download(m.list_year,"song_year.json");
+        });
+        $('#sub_title').append(btn_download);
     }
 
     getListByLang(lang){
