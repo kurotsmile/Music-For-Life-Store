@@ -77,6 +77,9 @@ class Songs {
     }
 
     showListSongByData(data) {
+        data.sort(function(a, b) {
+            return new Date(b.publishedAt) - new Date(a.publishedAt);
+        });
         m.act_menu("m-music");
         $("#all_item").html('');
         this.randomAvatar();

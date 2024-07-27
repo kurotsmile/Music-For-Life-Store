@@ -14,6 +14,9 @@ class Songs_Album{
     }
 
     loadListByData(data){
+        data.sort(function(a, b) {
+            return new Date(b.name) - new Date(a.name);
+        });
         m.act_menu("m-album");
         m.clear();
         $.each(data,function(index,a){

@@ -9,6 +9,9 @@ class Songs_year{
     }
 
     loadListByData(data){
+        data.sort(function(a, b) {
+            return new Date(b.name) - new Date(a.name);
+        });
         m.act_menu("m-year");
         m.clear();
         $.each(data,function(index,y){
