@@ -38,7 +38,10 @@ class Songs_year{
 
         var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
         $(btn_download).click(()=>{
-           cr.download(m.list_year,"song_year.json");
+            var data_download={};
+            data_download["all_item"]=m.list_year;
+            data_download["collection"]='song_year';
+            cr.download(data_download,"song_year.json");
         });
         $('#sub_title').append(btn_download);
     }

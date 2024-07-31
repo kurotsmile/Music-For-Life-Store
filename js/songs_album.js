@@ -51,7 +51,10 @@ class Songs_Album{
 
         var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
         $(btn_download).click(()=>{
-           cr.download(m.list_album,"song_album.json");
+            var data_download={};
+            data_download["all_item"]=m.list_album;
+            data_download["collection"]='song_album';
+            cr.download(data_download,"song_album.json");
         });
         $('#sub_title').append(btn_download);
     }

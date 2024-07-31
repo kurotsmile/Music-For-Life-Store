@@ -36,7 +36,10 @@ class Songs_Genre{
 
         var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
         $(btn_download).click(()=>{
-           cr.download(m.list_genre,"song_genre.json");
+            var data_download={};
+            data_download["all_item"]=m.list_genre;
+            data_download["collection"]='song_genre';
+            cr.download(data_download,"song_genre.json");
         });
         $('#sub_title').append(btn_download);
     }
