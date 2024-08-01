@@ -19,14 +19,14 @@ class Music{
     unlock_all_mp3=false;
 
     onLoad(){
+        cr.onLoad(true);
         m.url_data=cr.get_random(m.list_url_data);
         cr.setSiteName("Music For Life Store");
         cr.setSiteUrl("https://music-for-life-drab.vercel.app");
         cr.set_color_btn("#ff8c00");
-        cr.setVer("0.3");
+        cr.setVer("0.32");
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
-        cr.onLoad();
         cr.add_btn_top();
         cr.act_done_pay=(data)=>{m.check_pay(data);};
         if(localStorage.getItem("unlock_all_mp3")!=null){
@@ -35,7 +35,7 @@ class Music{
     }
 
     loading(){
-        $("#sub_title").html('<div class="col-12 mb-2"><i class="fas fa-spinner fa-spin"></i> Loading...</div>');
+        $("#sub_title").html('<div class="col-12 mb-2"><i class="fas fa-spinner fa-spin"></i> '+cr.l('loading','Loading...')+'</div>');
     }
 
     show_list_song(){
@@ -147,9 +147,9 @@ class Music{
 
         if(this.unlock_all_mp3==false){
             html_extension+='<div class="form-group">';
-            html_extension+='<label for="unlockallmp3"><i class="fas fa-shopping-cart"></i> Buy functionality</label>';
-            html_extension+='<button class="btn btn-dark m-1" onclick="m.show_pay_unlock_all_mp3();return false"><i class="fas fa-unlock-alt"></i> Unlock Mp3 music download function</button>';
-            html_extension+='<small class="form-text text-muted">Buy once and use unlimited mp3 file downloads forever</small>';
+            html_extension+='<label for="unlockallmp3"><i class="fas fa-shopping-cart"></i> '+cr.l('buy_all_mp3','Buy functionality')+'</label>';
+            html_extension+='<button class="btn btn-dark m-1" onclick="m.show_pay_unlock_all_mp3();return false"><i class="fas fa-unlock-alt"></i> '+cr.l('buy_all_mp3_text','Unlock Mp3 music download function')+'</button>';
+            html_extension+='<small class="form-text text-muted">'+cr.l('buy_all_mp3_tip','Buy once and use unlimited mp3 file downloads forever')+'</small>';
             html_extension+='</div>';
         }
         
@@ -218,7 +218,7 @@ class Music{
             <div class="col-6 col-sm-4 col-md-2 col-lg-2 col-xl-2 mb-1 p-1">
                 <div role="button" class="song-item">
                     <img src="images/${file_avatar}" alt="Avatar" class="song-avatar">
-                    <div class="btnplay btn-extension" title="Play Song"><i class="fas fa-play-circle"></i></div>
+                    <div class="btnplay btn-extension" title="${cr.l("play_song","Play Song")}"><i class="fas fa-play-circle"></i></div>
                     <div class="song-title">${name}</div>
                     <div class="song-artist">${tip}</div>
                 </div>

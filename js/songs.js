@@ -97,7 +97,7 @@ class Songs {
     songItemEmp(song) {
         var songItemEmp = m.box_item(this.file_avatar_song,song.name,song.artist);
         var songItem=$(songItemEmp).find(".song-item");
-        var btn_info = $('<div class="btninfo btn-extension" title="Info"><i class="fas fa-info-circle"></i></div>');
+        var btn_info = $('<div class="btninfo btn-extension" title="'+cr.l('info','Info')+'"><i class="fas fa-info-circle"></i></div>');
 
         $(btn_info).click(() => {
             m.song.showInfoByData(song);
@@ -106,7 +106,7 @@ class Songs {
         $(songItem).append(btn_info);
 
         if (song.lyrics != null && song.lyrics != "") {
-            var btnlyrics = $('<div class="btnlyrics btn-extension" title="Lyrics"><i class="fas fa-font"></i></div>');
+            var btnlyrics = $('<div class="btnlyrics btn-extension" title="'+cr.l('lyrics','Lyrics')+'"><i class="fas fa-font"></i></div>');
             $(btnlyrics).click(() => {
                 m.song.showlyrics(song);
                 return false;
@@ -115,7 +115,7 @@ class Songs {
         }
 
         if (song.link_ytb != null) {
-            var btn_video = $('<div class="btnvideo btn-extension" title="Watch video"><i class="fab fa-youtube"></i></div>');
+            var btn_video = $('<div class="btnvideo btn-extension" title="'+cr.l('watch_video','Watch video')+'"><i class="fab fa-youtube"></i></div>');
             $(btn_video).click(() => {
                 m.song.showVideo(song);
                 return false;
@@ -123,17 +123,17 @@ class Songs {
             $(songItem).append(btn_video);
         }
 
-        var btn_download = $('<div class="btndownload btn-extension" title="Download song by file mp3"><i class="fas fa-arrow-alt-circle-down"></i></div>');
+        var btn_download = $('<div class="btndownload btn-extension" title="'+cr.l('download_mp3','Download song by file mp3')+'"><i class="fas fa-arrow-alt-circle-down"></i></div>');
         $(btn_download).click(() => {
             if(m.unlock_all_mp3==false)
-                cr.show_pay(song.name,'Pay to download and use mp3 files for use on your other devices!','2.00',song.mp3,'link');
+                cr.show_pay(song.name,cr.l('pay_song_tip','Pay to download and use mp3 files for use on your other devices!'),'2.00',song.mp3,'link');
             else
                 window.open(song.mp3, '_blank').focus();
             return false;
         });
         $(songItem).append(btn_download);
 
-        var btn_add_playlist=$('<div class="btnAddPlaylist btn-extension" title="Add this song to a playlist"><i class="fas fa-plus-circle"></i></div>');
+        var btn_add_playlist=$('<div class="btnAddPlaylist btn-extension" title="'+cr.l('add_playlist','Add this song to a playlist')+'"><i class="fas fa-plus-circle"></i></div>');
         $(btn_add_playlist).click(()=>{
             cr_player.add_song(song.mp3, song.name, song.artist);
             return false;
@@ -222,7 +222,7 @@ class Songs {
     }
 
     menuSubInfoBox(data) {
-        var btn_play= $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn"  title="Play this song"><i class="fas fa-play"></i></button>');
+        var btn_play= $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="'+cr.l('play_song','Play this song')+'"><i class="fas fa-play"></i></button>');
         $(btn_play).click(()=>{
             cr_player.play(data.mp3, data.name, data.artist);
             $(this).tooltip('hide');
@@ -230,7 +230,7 @@ class Songs {
         });
         $("#all_btn_dock").append(btn_play);
 
-        var btn_add_playlist= $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn"  title="Add this song to a playlist"><i class="fas fa-plus-circle"></i></button>');
+        var btn_add_playlist= $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="'+cr.l('add_playlist','Add this song to a playlist')+'"><i class="fas fa-plus-circle"></i></button>');
         $(btn_add_playlist).click(()=>{
             cr_player.add_song(data.mp3, data.name, data.artist);
             $(this).tooltip('hide');
@@ -239,7 +239,7 @@ class Songs {
         $("#all_btn_dock").append(btn_add_playlist);
 
         if (data.lyrics != null) {
-            var btn_lyrics = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "lyrics" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn" title="Lyrics"><i class="fas fa-font"></i></button>');
+            var btn_lyrics = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "lyrics" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn" title="'+cr.l('lyrics','Lyrics')+'"><i class="fas fa-font"></i></button>');
             $(btn_lyrics).click(function () { 
                 m.song.showlyrics(data);
                 $(this).tooltip('hide');
@@ -248,7 +248,7 @@ class Songs {
         }
 
         if (data.link_ytb != null) {
-            var btn_ytb = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "video" ? "active" : "lyrics") + ' m-1 animate__animated animate__bounceIn" title="Watch Video"><i class="fab fa-youtube"></i></button>');
+            var btn_ytb = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "video" ? "active" : "video") + ' m-1 animate__animated animate__bounceIn" title="'+cr.l('watch_video','Watch Video')+'"><i class="fab fa-youtube"></i></button>');
             $(btn_ytb).click(function () { 
                 m.song.showVideo(data);
                 $(this).tooltip('hide');
@@ -256,14 +256,14 @@ class Songs {
             $("#all_btn_dock").append(btn_ytb);
         }
 
-        var btn_info = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "info" ? "active" : "info") + ' m-1 animate__animated animate__bounceIn" title="Info Song"><i class="fas fa-info-circle"></i></button>');
+        var btn_info = $('<button class="btn btn-sm btn-c btn-msg ' + (m.song.box_info_menu_cur === "info" ? "active" : "info") + ' m-1 animate__animated animate__bounceIn" title="'+cr.l('info','Info')+'"><i class="fas fa-info-circle"></i></button>');
         $(btn_info).click(function () { 
             m.song.showInfoByData(data);
             $(this).tooltip('hide'); 
         });
         $("#all_btn_dock").append(btn_info);
 
-        var btn_share = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="Share"><i class="fas fa-share-alt"></i></button>');
+        var btn_share = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="'+cr.l('share',"Share")+'"><i class="fas fa-share-alt"></i></button>');
         $(btn_share).click(function () {
             var link_share=cr.site_url+"?song="+data.name;
             $(this).tooltip('hide');
@@ -271,7 +271,7 @@ class Songs {
         });
         $("#all_btn_dock").append(btn_share);
         
-        var btn_download = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="Buy Mp3 File"><i class="fas fa-arrow-alt-circle-down"></i></button>');
+        var btn_download = $('<button class="btn btn-sm btn-c btn-msg m-1 animate__animated animate__bounceIn" title="'+cr.l("buy_song","Buy Mp3 File")+'"><i class="fas fa-arrow-alt-circle-down"></i></button>');
         $(btn_download).click(function () {
             $(this).tooltip('hide');
             cr.show_pay(data.name);
@@ -403,7 +403,7 @@ class Songs {
                     html = '<tr role="button" class="w-100">';
                     html += '<td style="width:5%"><i class="fas fa-music"></i></td>';
                     html += '<td style="width:80%">' + s.name + '</td>';
-                    html += '<td style="width:5%"><button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-play" title="Play One"></i></button></td>';
+                    html += '<td style="width:5%"><button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-play" title="'+cr.l('play_song','Play One')+'"></i></button></td>';
                     html += '<td class="col_1" style="width:5%"></td>';
                     html += '<td class="col_2" style="width:5%"></td>';
                     html += '</tr>';
@@ -413,7 +413,7 @@ class Songs {
                         Swal.close();
                     });
 
-                    var btn_add_song = $('<button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-plus-circle"  title="Add song to playlist"></i></button>');
+                    var btn_add_song = $('<button class="btn btn-sm btn-dark btn-box animate__animated animate__bounceIn"><i class="fas fa-plus-circle"  title="'+cr.l('add_playlist','Add song to playlist')+'"></i></button>');
                     $(btn_add_song).click(function () {
                         cr_player.add_song(s.mp3, s.name, s.artist);
                         return false;

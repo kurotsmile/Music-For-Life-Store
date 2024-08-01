@@ -85,16 +85,16 @@
 
     <div class="container">
         <h1 class="mb-4">
-            <img id="logo_app" class="animate__animated animate__fadeInDownBig" role="button" src="images/logo.png" alt="Logo" id="logo" onclick="m.onLoad()"> <span class="animate__animated animate__fadeInDownBig animate__delay-1s">Music Store</span>
-            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_song()" id="m-music"><i class="fas fa-music"></i> Music</button>
-            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_artist()" id="m-artist"><i class="fas fa-user-tie"></i> Artist</button>
-            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_year()" id="m-year"><i class="far fa-calendar-alt"></i> Year</button>
-            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_genre()" id="m-genre"><i class="fas fa-guitar"></i> Genre</button>
-            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_album()" id="m-album"><i class="fas fa-compact-disc"></i> Album</button>
-            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_search()" id="m-search"><i class="fas fa-search"></i> Search</button>
-            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_about()" id="m-about"><i class="fas fa-dove"></i> About</button>
-            <button class="btn btn-sm animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="cr.show_contact()"><i class="fas fa-phone"></i> Contact</button>
-            <button class="btn btn-sm animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_setting()"><i class="fas fa-cog"></i> Setting</button>
+            <img id="logo_app" class="animate__animated animate__fadeInDownBig" role="button" src="images/logo.png" alt="Logo" id="logo" onclick="m.onLoad()"> <span class="animate__animated animate__fadeInDownBig animate__delay-1s"><l class="lang" key_lang="music_store">Music Store</l></span>
+            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_song()" id="m-music"><i class="fas fa-music"></i> <l class="lang" key_lang="music">Music</l></button>
+            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_artist()" id="m-artist"><i class="fas fa-user-tie"></i> <l class="lang" key_lang="singer">Artist</l></button>
+            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_year()" id="m-year"><i class="far fa-calendar-alt"></i> <l class="lang" key_lang="year">Year</l></button>
+            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_genre()" id="m-genre"><i class="fas fa-guitar"></i> <l class="lang" key_lang="genre">Genre</l></button>
+            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_list_album()" id="m-album"><i class="fas fa-compact-disc"></i> <l class="lang" key_lang="album">Album</l></button>
+            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_search()" id="m-search"><i class="fas fa-search"></i> <l class="lang" key_lang="search">Search</l></button>
+            <button class="btn btn-sm btn-m animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_about()" id="m-about"><i class="fas fa-dove"></i> <l class="lang" key_lang="about">About</l></button>
+            <button class="btn btn-sm animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="cr.show_contact()"><i class="fas fa-phone"></i> <l class="lang" key_lang="contact">Contact</l></button>
+            <button class="btn btn-sm animate__animated animate__flipInX animate__fadeInDownBig animate__delay-2s" onclick="m.show_setting()"><i class="fas fa-cog"></i> <l class="lang" key_lang="setting">Setting</l></button>
         </h1>
      
         <div class="row text-center">
@@ -105,12 +105,12 @@
 
         <div class="row">
             <footer class="animate__animated animate__fadeInUp animate__delay-3s mt-3 text-black text-center col-12">
-                <p>&copy; 2024 Music For Life Store. Copyrighted by <b>Tran Thien Thanh</b></p>
-                <a href="#" onclick="cr.show_contact();return false;" class="m-1"><i class="fas fa-envelope-open"></i> Contact</a>
-                <a href="#" onclick="m.show_pp();return false;" class="m-1 btn-m" id="m-pp"><i class="fas fa-carrot"></i> Privacy Policy</a>
-                <a href="#" onclick="m.show_tos();return false;" class="m-1 btn-m" id="m-tos"><i class="fas fa-universal-access"></i> Terms of Service</a>
-                <a href="https://www.paypal.com/paypalme/kurotsmile" target="_blank" class="m-1"><i class="fas fa-donate"></i> Donate</a>
-                <a href="#" onclick="cr.show_donation();return false;"  class="m-1"><i class="fas fa-heart"></i> Sponsor</a>
+                <p>&copy; 2024 Music For Life Store. <l class="lang" key_lang="copyright">Copyrighted by <b>Tran Thien Thanh</b></l></p>
+                <a href="#" onclick="cr.show_contact();return false;" class="m-1"><i class="fas fa-envelope-open"></i> <l class="lang" key_lang="contact">Contact</l></a>
+                <a href="#" onclick="m.show_pp();return false;" class="m-1 btn-m" id="m-pp"><i class="fas fa-carrot"></i> <l class="lang" key_lang="pp">Privacy Policy</l></a>
+                <a href="#" onclick="m.show_tos();return false;" class="m-1 btn-m" id="m-tos"><i class="fas fa-universal-access"></i> <l class="lang" key_lang="tos">Terms of Service</l></a>
+                <a href="https://www.paypal.com/paypalme/kurotsmile" target="_blank" class="m-1"><i class="fas fa-donate"></i> <l class="lang" key_lang="donation">Donate</l></a>
+                <a href="#" onclick="cr.show_donation();return false;"  class="m-1"><i class="fas fa-heart"></i> <l class="lang" key_lang="sponsor">Sponsor</l></a>
             </footer>
         </div>
     </div>

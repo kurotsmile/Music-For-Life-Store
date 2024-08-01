@@ -1,7 +1,7 @@
 class Search{
     show(){
         m.act_menu('m-search');
-        m.sub_title("Search "+m.key_search+"...");
+        m.sub_title(cr.l('search_result',"Search Results")+" "+m.key_search+"...");
         m.clear();
         $.each(m.song.list_song,function(index,song){
             if(song.name.toLowerCase().indexOf(m.key_search.toLowerCase())!==-1){
