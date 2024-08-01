@@ -49,14 +49,16 @@ class Songs_Album{
             $('#sub_title').append(btn_l);
         });
 
-        var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
-        $(btn_download).click(()=>{
-            var data_download={};
-            data_download["all_item"]=m.list_album;
-            data_download["collection"]='song_album';
-            cr.download(data_download,"song_album.json");
-        });
-        $('#sub_title').append(btn_download);
+        if(cr.dev){
+            var btn_download=$(`<button class="btn btn-sm m-1 btn-c btn_l"><i class="fas fa-arrow-alt-circle-down"></i></button>`);
+            $(btn_download).click(()=>{
+                var data_download={};
+                data_download["all_item"]=m.list_album;
+                data_download["collection"]='song_album';
+                cr.download(data_download,"song_album.json");
+            });
+            $('#sub_title').append(btn_download);
+        }
     }
 
     getListByLang(lang){
