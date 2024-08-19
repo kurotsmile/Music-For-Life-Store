@@ -21,10 +21,23 @@ class Music{
     onLoad(){
         cr.onLoad(true);
         m.url_data=cr.get_random(m.list_url_data);
+
         cr.setSiteName("Music For Life Store");
         cr.setSiteUrl("https://music-for-life-drab.vercel.app");
         cr.set_color_btn("#ff8c00");
-        cr.setVer("0.32");
+
+        cr.email1="tranthienthanh93@gmail.com";
+        cr.email2="kurotsmile@gmail.com";
+        cr.link_twitte="https://twitter.com/carrotstore1";
+        cr.link_pinterest="https://br.pinterest.com/tranrot93";
+        cr.link_linkedin="https://www.linkedin.com/in/tranthienthanh";
+        cr.link_fb="https://www.facebook.com/kurotsmile";
+        cr.contact_phone="+840978651577";
+        cr.link_tiktok="https://www.tiktok.com/@kurotsmilethanh";
+        cr.link_youtube="https://www.youtube.com/AuTri";
+        cr.link_github="https://github.com/kurotsmile";
+
+        cr.setVer("0.35");
         cr.loadJs("js/songs.js","song");
         cr.loadJs("cr_player/cr_player.js","cr_player","onCreate");
         cr.add_btn_top();
